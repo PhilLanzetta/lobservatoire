@@ -6,45 +6,35 @@
  */
 
 import * as React from "react"
+import { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-
 import Header from "./header"
-import "./layout.css"
+import Footer from "./footer"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+const Layout = ({ children, location }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [isLight, setIsLight] = useState(true)
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const toggleMode = () => {
+    setIsLight(!isLight)
+  }
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: `var(--size-content)`,
-          padding: `var(--size-gutter)`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `var(--space-5)`,
-            fontSize: `var(--font-sm)`,
-          }}
-        >
-          © {new Date().getFullYear()} &middot; Website Designed and Developed by
-          {` `}
-          <a href="https://www.pacificpacific.pub">Pacific</a>
-        </footer>
-      </div>
-    </>
+    <div className={isLight ? "light" : "dark"}>
+      <Header
+        location={location}
+        isOpen={isOpen}
+        toggleMenu={toggleMenu}
+        isLight={isLight}
+        toggleMode={toggleMode}
+      />
+      <main>{children}</main>
+      <Footer isLight={isLight}></Footer>
+    </div>
   )
 }
 

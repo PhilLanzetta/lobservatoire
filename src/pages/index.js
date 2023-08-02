@@ -2,11 +2,10 @@ import * as React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
 
-const IndexPage = () => (
-  <Layout>
-    <div className={styles.textCenter}>
+const IndexPage = ({ location }) => (
+  <Layout location={location}>
+    <div className="placeholder">
       <h1>L'Observatoire</h1>
     </div>
   </Layout>
