@@ -31,6 +31,7 @@
 
 html {
   font-size: 18px;
+  font-family: var(--font-primary);
 }
 
 @media screen and (max-width: 600px) {
@@ -64,6 +65,10 @@ a {
   font-family: inherit;
   text-decoration: none;
   color: inherit;
+}
+
+.upper {
+  text-transform: uppercase;
 }
 
 /*
@@ -278,3 +283,113 @@ header {
 FOOTER
 ==========
 */
+
+footer {
+  font-weight: 300;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 40px;
+  padding-top: 180px;
+  font-size: var(--font-sm);
+  line-height: 1.5;
+  flex-wrap: wrap;
+}
+
+.light-gradient {
+  background: linear-gradient(#ffffff, #a8a8a8);
+  transition: all var(--md-transition);
+}
+
+.dark-gradient {
+  background: linear-gradient(#000000, #5c5959);
+  transition: all var(--md-transition);
+}
+
+.footer-column-links,
+.footer-column-logo {
+  width: 25%;
+}
+
+.footer-middle {
+  width: 50%;
+  display: flex;
+}
+
+.footer-column-location,
+.footer-column-emails {
+  width: 50%;
+}
+
+.footer-column-emails,
+.footer-column-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.footer-logo {
+  width: 40%;
+  fill: currentColor;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-credit {
+  margin-top: var(--spacing-big);
+  opacity: 0.75;
+}
+
+.footer-locations {
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1025px) {
+  .footer-column-links {
+    width: 15%;
+  }
+  .footer-column-logo {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .footer-logo {
+    display: none;
+  }
+
+  .footer-column-logo {
+    width: 100%;
+  }
+
+  .footer-middle {
+    width: 75%;
+    margin-top: var(--spacing-big);
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .footer-column-location,
+  .footer-column-emails {
+    width: 100%;
+  }
+
+  .footer-credit {
+    display: none;
+  }
+
+  .footer-column-links {
+    width: 25%;
+    margin-top: var(--spacing-big);
+  }
+}
