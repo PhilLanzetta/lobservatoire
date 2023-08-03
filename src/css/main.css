@@ -106,6 +106,8 @@ header {
   right: 40px;
   z-index: 500;
   cursor: pointer;
+  mix-blend-mode: difference;
+  color: #fff;
 }
 
 .secondary-menu {
@@ -415,4 +417,33 @@ footer {
   .footer-column-links {
     gap: 100px;
   }
+}
+
+/*
+==========
+PROJECT PAGE
+==========
+*/
+
+.hero-slide-container {
+  position: relative;
+}
+
+.hero-slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 400ms;
+}
+
+.darken {
+  background: rgba(0, 0, 0, 0.75);
+  transition: all 400ms;
+}
+
+.highlight {
+  background: none;
+  transition: all 400ms;
 }
