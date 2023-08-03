@@ -336,7 +336,7 @@ footer {
 
 .footer-credit {
   margin-top: var(--spacing-big);
-  opacity: 0.75;
+  opacity: 0.5;
 }
 
 .footer-locations {
@@ -352,6 +352,16 @@ footer {
 .footer-social {
   display: flex;
   flex-direction: column;
+}
+
+.footer-credit-mobile {
+  display: none;
+}
+
+.careers-link {
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
 @media screen and (max-width: 1025px) {
@@ -388,8 +398,21 @@ footer {
     display: none;
   }
 
+  .footer-credit-mobile {
+    display: block;
+    margin-top: var(--spacing-sm);
+    opacity: 0.5;
+  }
+
   .footer-column-links {
     width: 25%;
     margin-top: var(--spacing-big);
+    gap: 115px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer-column-links {
+    gap: 100px;
   }
 }

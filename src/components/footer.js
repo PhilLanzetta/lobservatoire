@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import { HiArrowUpRight } from "react-icons/hi2"
 
 const Footer = ({ isLight }) => {
   return (
@@ -88,7 +89,9 @@ const Footer = ({ isLight }) => {
       <div className="footer-column-links">
         <div>
           <p className="upper">Careers</p>
-          <Link to="/about">Join us ↗</Link>
+          <Link to="/about" className="careers-link">
+            Join us <HiArrowUpRight></HiArrowUpRight>
+          </Link>
         </div>
         <div className="footer-social">
           <a>Instagram</a>
@@ -96,17 +99,17 @@ const Footer = ({ isLight }) => {
           <a>Twitter</a>
           <a>Linkedin</a>
           <a>Vimeo</a>
+          <p className="footer-credit-mobile">
+            Website Designed and Developed by{" "}
+            <a
+              href="https://www.pacificpacific.pub"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Pacific
+            </a>
+          </p>
         </div>
-        <p className="footer-credit-mobile">
-          Website Designed and Developed by{" "}
-          <a
-            href="https://www.pacificpacific.pub"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Pacific
-          </a>
-        </p>
       </div>
     </footer>
   )
