@@ -1,6 +1,6 @@
 import React from "react"
 import { marked } from "marked"
-import { Fade } from "react-reveal"
+import { Fade } from "react-awesome-reveal"
 
 const ProjectIntro = ({ headline, title, body, city, year }) => {
   return (
@@ -23,7 +23,7 @@ const ProjectIntro = ({ headline, title, body, city, year }) => {
             )}
             {body && (
               <article
-              className="project-intro-body"
+                className="project-intro-body"
                 dangerouslySetInnerHTML={{ __html: marked.parse(body) }}
               ></article>
             )}
