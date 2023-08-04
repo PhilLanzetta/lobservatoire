@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import HeroSlider from "../components/heroSlider"
+import ProjectIntro from "../components/projectIntro"
 
 const SingleProject = ({ data }) => {
   const {
@@ -23,7 +24,13 @@ const SingleProject = ({ data }) => {
   return (
     <Layout>
       <HeroSlider images={heroImages}></HeroSlider>
-      <div>{projectName}</div>
+      <ProjectIntro
+        headline={headlineText?.headlineText}
+        title={projectName}
+        body={bodyText?.bodyText}
+        city={cityCountry}
+        year={year}
+      ></ProjectIntro>
     </Layout>
   )
 }
