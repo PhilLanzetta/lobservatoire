@@ -454,6 +454,11 @@ PROJECT PAGE
   transition: all 400ms;
 }
 
+.hero-slider {
+  background: rgba(0, 0, 0, 0.85);
+  height: 90vh;
+}
+
 .darken {
   background: rgba(0, 0, 0, 0.75);
   transition: all 400ms;
@@ -462,6 +467,33 @@ PROJECT PAGE
 .highlight {
   background: none;
   transition: all 400ms;
+}
+
+.hero-svg {
+  stroke: #fff;
+  stroke-width: 1;
+  mix-blend-mode: difference;
+  height: 100%;
+  width: 100%;
+}
+
+.prev-button,
+.next-button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
 }
 
 .project-intro-container {
@@ -511,6 +543,12 @@ PROJECT PAGE
   line-height: var(--primary-line-height);
 }
 
+.project-intro-body p {
+  font-weight: var(--thin-weight);
+  font-size: var(--font-sm-resp);
+  margin-bottom: var(--spacing-md);
+}
+
 @media screen and (max-width: 600px) {
   .project-intro-container {
     padding: 0 20px;
@@ -519,5 +557,9 @@ PROJECT PAGE
   .title-city {
     flex-direction: column;
     gap: 0;
+  }
+
+  .next-button, .prev-button {
+    display: none;
   }
 }
