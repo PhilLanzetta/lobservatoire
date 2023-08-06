@@ -3,6 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import ReactPlayer from "react-player"
 
 const ModuleContent = ({ moduleContent }) => {
+  const [isPlaying, setIsPlaying] = useState(false)
   return (
     <div className="module-content-container">
       {moduleContent.map(item => {
@@ -43,19 +44,22 @@ const ModuleContent = ({ moduleContent }) => {
                 height={"100%"}
                 className="module-video-player"
                 controls
-                playing
-                light={
-                  <GatsbyImage
-                    image={item.coverImage.gatsbyImageData}
-                    alt={item.coverImage.description}
-                  ></GatsbyImage>
-                }
-                playIcon={
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="module-play-btn"
-                    viewBox="0 0 132 132"
-                  >
+                playing={isPlaying}
+              ></ReactPlayer>
+              <div
+                className={`module-video-cover
+                  ${isPlaying ? "hide-video-cover" : ""}`}
+              >
+                <GatsbyImage
+                  image={item.coverImage.gatsbyImageData}
+                  alt={item.coverImage.description}
+                  className="module-video-img"
+                ></GatsbyImage>
+                <button
+                  className="module-play-btn"
+                  onClick={() => setIsPlaying(true)}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132">
                     <g
                       id="Group_287"
                       data-name="Group 287"
@@ -87,8 +91,8 @@ const ModuleContent = ({ moduleContent }) => {
                       </g>
                     </g>
                   </svg>
-                }
-              ></ReactPlayer>
+                </button>
+              </div>
             </div>
           )
       })}

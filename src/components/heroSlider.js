@@ -1,5 +1,5 @@
 import React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Slider from "react-slick"
 import { GatsbyImage } from "gatsby-plugin-image"
 
@@ -26,12 +26,8 @@ function NextArrow(props) {
           transform="translate(19.688 9.5) rotate(90)"
           fill="none"
         />
-        <g
-          id="Ellipse_184"
-          data-name="Ellipse 184"
-          fill="none"
-        >
-          <circle cx="15" cy="15" r="14.5"/>
+        <g id="Ellipse_184" data-name="Ellipse 184" fill="none">
+          <circle cx="15" cy="15" r="14.5" />
         </g>
       </svg>
     </div>
@@ -61,11 +57,7 @@ function PrevArrow(props) {
           transform="translate(18.313 9.5) rotate(90)"
           fill="none"
         />
-        <g
-          id="Ellipse_184"
-          data-name="Ellipse 184"
-          fill="none"
-        >
+        <g id="Ellipse_184" data-name="Ellipse 184" fill="none">
           <circle cx="15" cy="15" r="14.5" />
         </g>
       </svg>
@@ -75,6 +67,7 @@ function PrevArrow(props) {
 
 const HeroSlider = ({ images }) => {
   const [imageIndex, setImageIndex] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
   const settings = {
     infinite: true,
     centerMode: true,
@@ -92,6 +85,9 @@ const HeroSlider = ({ images }) => {
 
   return (
     <div className="hero-slider-container">
+      <div
+        className="load"
+      ></div>
       <Slider {...settings} className="hero-slider">
         {images.map((image, index) => {
           const imgWidth =
