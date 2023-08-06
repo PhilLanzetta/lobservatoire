@@ -76,7 +76,7 @@ function PrevArrow(props) {
 const HeroSlider = ({ images }) => {
   const [imageIndex, setImageIndex] = useState(0)
   const settings = {
-    infinite: false,
+    infinite: true,
     centerMode: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -91,29 +91,31 @@ const HeroSlider = ({ images }) => {
   }
 
   return (
-    <Slider {...settings} className="hero-slider">
-      {images.map((image, index) => {
-        const imgWidth =
-          (image.gatsbyImageData.width * 90) / image.gatsbyImageData.height
-        return (
-          <div className="hero-slide-container">
-            <div className="slide-flex-container">
-              <GatsbyImage
-                image={image.gatsbyImageData}
-                alt={image.description}
-                style={{ width: `${imgWidth}vh` }}
-                className="hero-slide-image"
-              ></GatsbyImage>
-              {index === imageIndex ? (
-                <div className="hero-slide-overlay highlight"></div>
-              ) : (
-                <div className="hero-slide-overlay darken"></div>
-              )}
+    <div className="hero-slider-container">
+      <Slider {...settings} className="hero-slider">
+        {images.map((image, index) => {
+          const imgWidth =
+            (image.gatsbyImageData.width * 90) / image.gatsbyImageData.height
+          return (
+            <div className="hero-slide-container">
+              <div className="slide-flex-container">
+                <GatsbyImage
+                  image={image.gatsbyImageData}
+                  alt={image.description}
+                  style={{ width: `${imgWidth}vh` }}
+                  className="hero-slide-image"
+                ></GatsbyImage>
+                {index === imageIndex ? (
+                  <div className="hero-slide-overlay highlight"></div>
+                ) : (
+                  <div className="hero-slide-overlay darken"></div>
+                )}
+              </div>
             </div>
-          </div>
-        )
-      })}
-    </Slider>
+          )
+        })}
+      </Slider>
+    </div>
   )
 }
 

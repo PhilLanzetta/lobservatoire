@@ -14,20 +14,23 @@ const ProjectIntro = ({ headline, title, body, city, year }) => {
           <p>{year}</p>
         </article>
         <article>
-          <Fade>
-            {headline && (
+          {headline && (
+            <Fade triggerOnce={true} fraction={0.25}>
               <article
                 dangerouslySetInnerHTML={{ __html: marked.parse(headline) }}
                 className="project-intro-headline"
               ></article>
-            )}
-            {body && (
+            </Fade>
+          )}
+
+          {body && (
+            <Fade triggerOnce={true} cascade>
               <article
                 className="project-intro-body"
                 dangerouslySetInnerHTML={{ __html: marked.parse(body) }}
               ></article>
-            )}
-          </Fade>
+            </Fade>
+          )}
         </article>
       </div>
     </section>

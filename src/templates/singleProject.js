@@ -1,8 +1,11 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import HeroSlider from "../components/heroSlider"
 import ProjectIntro from "../components/projectIntro"
+import ProjectTable from "../components/projectTable"
+import ModuleContent from "../components/moduleContent"
+import Related from "../components/related"
 
 const SingleProject = ({ data }) => {
   const {
@@ -20,9 +23,15 @@ const SingleProject = ({ data }) => {
     dateCompleted,
     cityCountry,
     bodyText,
+    team,
+    client,
   } = data.contentfulProjectPage
   return (
     <Layout>
+      <div className="project-header">
+        <Link to="/projects">Projects</Link> | <Link to="projects">{type}</Link>{" "}
+        | <Link to="projects">{geographicRegion}</Link>
+      </div>
       <HeroSlider images={heroImages}></HeroSlider>
       <ProjectIntro
         headline={headlineText?.headlineText}
@@ -31,6 +40,19 @@ const SingleProject = ({ data }) => {
         city={cityCountry}
         year={year}
       ></ProjectIntro>
+      <ProjectTable
+        architect={architect}
+        awards={awards}
+        status={status}
+        size={size}
+        dateCompleted={dateCompleted}
+        team={team}
+        client={client}
+      ></ProjectTable>
+      {moduleContent && (
+        <ModuleContent moduleContent={moduleContent}></ModuleContent>
+      )}
+      <Related></Related>
     </Layout>
   )
 }
@@ -58,7 +80,7 @@ export const query = graphql`
       projectName
       moduleContent {
         ... on ContentfulSingleColumnImage {
-          id
+          singleId: id
           image {
             caption
             image {
@@ -68,7 +90,7 @@ export const query = graphql`
           }
         }
         ... on ContentfulTwoColumnImage {
-          id
+          twoColId: id
           images {
             caption
             image {
@@ -78,9 +100,13 @@ export const query = graphql`
           }
         }
         ... on ContentfulVideoModule {
-          id
+          videoId: id
           caption
           vimeoLink
+          coverImage {
+            description
+            gatsbyImageData
+          }
         }
       }
       heroImages {
@@ -92,9 +118,15 @@ export const query = graphql`
       }
       geographicRegion
       dateCompleted
+      client
       cityCountry
       bodyText {
         bodyText
+      }
+      team {
+        name
+        slug
+        id
       }
     }
   }
