@@ -425,6 +425,10 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
+  footer {
+    padding: 180px 20px 40px 20px;
+  }
+
   .footer-column-links {
     gap: 100px;
   }
@@ -447,6 +451,7 @@ PROJECT PAGE
 
 .hero-slider-container {
   width: 100vw;
+  height: 90vh;
   overflow: hidden;
   position: relative;
 }
@@ -459,7 +464,7 @@ PROJECT PAGE
   height: 100%;
   background: #000;
   z-index: 10;
-  animation: fadeOut 1000ms forwards;
+  animation: fadeOut var(--slow-transition) forwards;
 }
 
 @keyframes fadeOut {
@@ -612,6 +617,7 @@ PROJECT PAGE
   display: flex;
   padding: var(--spacing-sm) 0;
   font-size: var(--font-sm-resp);
+  align-items: flex-start;
 }
 
 .project-table-row p:first-of-type {
@@ -624,6 +630,12 @@ PROJECT PAGE
   border: 1px solid;
   padding: 2px var(--spacing-sm);
   border-radius: 400px;
+  transition: all var(--fast-transition);
+}
+
+.project-table-button:hover {
+  box-shadow: 0px 0px 3px 0px;
+  transition: all var(--fast-transition);
 }
 
 .project-table-awards {
@@ -699,8 +711,9 @@ PROJECT PAGE
 
 .hide-video-cover {
   opacity: 0;
-  z-index: -1;
-  transition: all 800ms;
+  transform: translateY(200%);
+  transition: opacity var(--slow-transition),
+    transform var(--slow-transition) 2s;
 }
 
 .module-play-btn {
@@ -746,5 +759,6 @@ PROJECT PAGE
 
   .two-col-image {
     width: 100%;
+    margin-bottom: var(--spacing-md);
   }
 }

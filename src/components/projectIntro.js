@@ -1,8 +1,11 @@
 import React from "react"
 import { marked } from "marked"
 import { Fade } from "react-awesome-reveal"
+import useWindowSize from "../utils/useWindowSize"
 
 const ProjectIntro = ({ headline, title, body, city, year }) => {
+  const { width } = useWindowSize()
+  const mobile = width < 601
   return (
     <section className="project-intro-container">
       <div className="project-intro-max-width">
@@ -15,7 +18,7 @@ const ProjectIntro = ({ headline, title, body, city, year }) => {
         </article>
         <article>
           {headline && (
-            <Fade triggerOnce={true} fraction={0.25}>
+            <Fade triggerOnce={true} fraction={mobile ? 0 : 0.25}>
               <article
                 dangerouslySetInnerHTML={{ __html: marked.parse(headline) }}
                 className="project-intro-headline"

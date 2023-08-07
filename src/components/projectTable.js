@@ -10,6 +10,7 @@ const ProjectTable = ({
   awards,
   team,
   client,
+  network,
 }) => {
   return (
     <div className="project-table-container">
@@ -25,6 +26,24 @@ const ProjectTable = ({
                 </Link>
               </div>
             </div>
+          )}
+          {network && (
+            <>
+              {network.map((networkLink, index) => {
+                const linkArray = networkLink.split(": ")
+                return (
+                  <div key={index}>
+                    <hr className="faded-line"></hr>
+                    <div className="project-table-row">
+                      <p>{linkArray[0]}</p>
+                      <Link to="/projects" className="project-table-button">
+                        {linkArray[1]}
+                      </Link>
+                    </div>
+                  </div>
+                )
+              })}
+            </>
           )}
           {size && (
             <div>

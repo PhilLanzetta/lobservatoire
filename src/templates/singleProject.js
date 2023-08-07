@@ -25,6 +25,7 @@ const SingleProject = ({ data }) => {
     bodyText,
     team,
     client,
+    furtherNetworkLinks,
   } = data.contentfulProjectPage
   return (
     <Layout>
@@ -48,6 +49,7 @@ const SingleProject = ({ data }) => {
         dateCompleted={dateCompleted}
         team={team}
         client={client}
+        network={furtherNetworkLinks}
       ></ProjectTable>
       {moduleContent && (
         <ModuleContent moduleContent={moduleContent}></ModuleContent>
@@ -128,6 +130,7 @@ export const query = graphql`
         slug
         id
       }
+      furtherNetworkLinks
     }
   }
 `
