@@ -711,7 +711,7 @@ PROJECT PAGE
 
 .hide-video-cover {
   opacity: 0;
-  transform: translateY(200%);
+  transform: translateX(200%);
   transition: opacity var(--slow-transition),
     transform var(--slow-transition) 2s;
 }
