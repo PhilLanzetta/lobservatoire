@@ -23,9 +23,7 @@ const Projects = ({ data }) => {
             </Link>
             <div className="tile-tag-container">
               <button className="tile-tag-btn">{project.type}</button>
-              <button className="tile-tag-btn">
-                {project.geographicRegion}
-              </button>
+              <button className="tile-tag-btn">{project.cityCountry}</button>
             </div>
           </div>
         ))}
@@ -42,6 +40,7 @@ export const query = graphql`
         client
         furtherNetworkLinks
         geographicRegion
+        cityCountry
         id
         projectName
         slug
