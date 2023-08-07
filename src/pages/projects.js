@@ -22,7 +22,6 @@ const Projects = ({ data }) => {
               <p className="tile-title">{project.projectName}</p>
             </Link>
             <div className="tile-tag-container">
-              <button className="tile-tag-btn">{project.architect}</button>
               <button className="tile-tag-btn">{project.type}</button>
               <button className="tile-tag-btn">
                 {project.geographicRegion}
