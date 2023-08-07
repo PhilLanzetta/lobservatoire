@@ -67,6 +67,7 @@ button {
   color: inherit;
   font-size: inherit;
   font-weight: inherit;
+  font-family: inherit;
 }
 
 a {
@@ -438,7 +439,7 @@ footer {
 
 /*
 ==========
-PROJECT PAGE
+SINGLE PROJECT PAGE
 ==========
 */
 
@@ -762,5 +763,55 @@ PROJECT PAGE
   .two-col-image {
     width: 100%;
     margin-bottom: var(--spacing-md);
+  }
+}
+
+/*
+==========
+PROJECTS PAGE
+==========
+*/
+
+.projects-grid-container {
+  padding: 40px;
+  padding-top: 110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.project-tile {
+  width: clamp(450px, 30%, 1500px);
+}
+
+.tile-title {
+  margin: var(--spacing-xs) 0;
+}
+
+.tile-tag-container {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.tile-tag-btn {
+  border: 1px solid;
+  border-radius: 400px;
+  padding: 2px 12px;
+  font-size: var(--font-xs-resp);
+}
+
+@media screen and (max-width: 600px) {
+  .project-tile {
+    width: 100%;
+  }
+
+  .projects-grid-container {
+    padding: 20px;
+    padding-top: 100px;
+  }
+
+  .tile-tag-btn {
+    padding: 1px 8px;
   }
 }
