@@ -28,12 +28,14 @@ const SingleProject = ({ data }) => {
     furtherNetworkLinks,
     photoCredit,
     press,
+    nonLinkedInfo,
   } = data.contentfulProjectPage
   return (
     <Layout>
       <div className="project-header">
-        <Link to="/projects">Projects</Link> | <Link to="/projects">{type}</Link>{" "}
-        | <Link to="/projects">{geographicRegion}</Link>
+        <Link to="/projects">Projects</Link> |{" "}
+        <Link to="/projects">{type}</Link> |{" "}
+        <Link to="/projects">{geographicRegion}</Link>
       </div>
       <HeroSlider images={heroImages}></HeroSlider>
       <ProjectIntro
@@ -54,6 +56,7 @@ const SingleProject = ({ data }) => {
         network={furtherNetworkLinks}
         photoCredit={photoCredit}
         press={press}
+        nonLinked={nonLinkedInfo}
       ></ProjectTable>
       {moduleContent && (
         <ModuleContent moduleContent={moduleContent}></ModuleContent>
@@ -141,6 +144,7 @@ export const query = graphql`
         url
       }
       photoCredit
+      nonLinkedInfo
     }
   }
 `

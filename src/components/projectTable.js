@@ -13,6 +13,7 @@ const ProjectTable = ({
   network,
   photoCredit,
   press,
+  nonLinked,
 }) => {
   return (
     <div className="project-table-container">
@@ -41,6 +42,22 @@ const ProjectTable = ({
                       <Link to="/projects" className="project-table-button">
                         {linkArray[1]}
                       </Link>
+                    </div>
+                  </div>
+                )
+              })}
+            </>
+          )}
+          {nonLinked && (
+            <>
+              {nonLinked.map((item, index) => {
+                const itemArray = item.split(": ")
+                return (
+                  <div key={index}>
+                    <hr className="faded-line"></hr>
+                    <div className="project-table-row">
+                      <p>{itemArray[0]}</p>
+                      <p>{itemArray[1]}</p>
                     </div>
                   </div>
                 )
@@ -128,9 +145,17 @@ const ProjectTable = ({
               <hr className="faded-line"></hr>
               <div className="project-table-row">
                 <p>Client</p>
-                <Link to="/projects" className="project-table-button">
-                  {client}
-                </Link>
+                <div className="project-table-team">
+                  {client.map((item, index) => (
+                    <Link
+                      to="/projects"
+                      className="project-table-button"
+                      key={index}
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           )}
