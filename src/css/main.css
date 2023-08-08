@@ -32,6 +32,7 @@
   --thin-weight: 100;
   --primary-line-height: 1.25;
   --body-max-width: 1480px;
+  --lofty-line-height: 1.35;
 }
 
 html {
@@ -524,13 +525,14 @@ SINGLE PROJECT PAGE
   mix-blend-mode: difference;
   height: 100%;
   width: 100%;
+  opacity: var(--less-opacity);
 }
 
 .prev-button,
 .next-button {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -843,4 +845,19 @@ HOME
   left: 40px;
   bottom: 40px;
   color: #fff;
+  line-height: var(--lofty-line-height);
+  max-width: clamp(400px, 30%, 800px);
+}
+
+.home-title-link {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+@media screen and (max-width: 600px) {
+  .home-slider-text {
+    left: 20px;
+    bottom: 20px;
+    max-width: 80%;
+  }
 }
