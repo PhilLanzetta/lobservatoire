@@ -26,6 +26,8 @@ const SingleProject = ({ data }) => {
     team,
     client,
     furtherNetworkLinks,
+    photoCredit,
+    press,
   } = data.contentfulProjectPage
   return (
     <Layout>
@@ -50,6 +52,8 @@ const SingleProject = ({ data }) => {
         team={team}
         client={client}
         network={furtherNetworkLinks}
+        photoCredit={photoCredit}
+        press={press}
       ></ProjectTable>
       {moduleContent && (
         <ModuleContent moduleContent={moduleContent}></ModuleContent>
@@ -131,6 +135,12 @@ export const query = graphql`
         id
       }
       furtherNetworkLinks
+      press {
+        linkText
+        id
+        url
+      }
+      photoCredit
     }
   }
 `

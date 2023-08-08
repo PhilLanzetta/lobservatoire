@@ -11,6 +11,8 @@ const ProjectTable = ({
   team,
   client,
   network,
+  photoCredit,
+  press,
 }) => {
   return (
     <div className="project-table-container">
@@ -101,6 +103,26 @@ const ProjectTable = ({
               </div>
             </div>
           )}
+          {press && (
+            <div>
+              <hr className="faded-line"></hr>
+              <div className="project-table-row">
+                <p>Press</p>
+                <div className="project-table-awards">
+                  {press.map(press => (
+                    <a
+                      key={press.id}
+                      href={press.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {press.linkText}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
           {client && (
             <div>
               <hr className="faded-line"></hr>
@@ -128,6 +150,15 @@ const ProjectTable = ({
                     </Link>
                   ))}
                 </div>
+              </div>
+            </div>
+          )}
+          {photoCredit && (
+            <div>
+              <hr className="faded-line"></hr>
+              <div className="project-table-row">
+                <p>Photo Credit</p>
+                <p>{photoCredit}</p>
               </div>
             </div>
           )}
