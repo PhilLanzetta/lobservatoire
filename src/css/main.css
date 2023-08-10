@@ -581,6 +581,7 @@ SINGLE PROJECT PAGE
 .title-city {
   display: flex;
   gap: var(--spacing-big);
+  text-transform: capitalize;
 }
 
 .project-intro-headline {
@@ -801,6 +802,11 @@ PROJECTS PAGE
   border-radius: 400px;
   padding: 2px 12px;
   font-size: var(--font-xs-resp);
+  text-transform: capitalize;
+}
+
+.project-tile-image {
+  aspect-ratio: 3 / 2;
 }
 
 @media screen and (max-width: 600px) {

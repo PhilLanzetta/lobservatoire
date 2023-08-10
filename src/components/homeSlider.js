@@ -90,7 +90,11 @@ const HomeSlider = ({ images }) => {
                 <p>{image.shortExcerpt}</p>
               </Link>
               <div className="tile-tag-container">
-                <Link className="tile-tag-btn">{image.type}</Link>
+                {image.typology.map((type, index) => (
+                  <Link className="tile-tag-btn" key={index}>
+                    {type}
+                  </Link>
+                ))}
                 <Link className="tile-tag-btn">{image.cityCountry}</Link>
               </div>
             </div>

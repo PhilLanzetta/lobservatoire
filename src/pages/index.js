@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 import HomeSlider from "../components/homeSlider"
 
 const IndexPage = ({ location, data }) => {
-  const homeImages = data.allContentfulProjectPage.nodes
+  const homeImages = data.allContentfulProject.nodes
   return (
   <Layout location={location}>
     <HomeSlider images={homeImages}></HomeSlider>
@@ -16,7 +16,7 @@ const IndexPage = ({ location, data }) => {
 
 export const query = graphql`
   query {
-    allContentfulProjectPage(filter: { featured: { eq: true } }) {
+    allContentfulProject(filter: { featured: { eq: true } }) {
       nodes {
         geographicRegion
         id
@@ -26,7 +26,7 @@ export const query = graphql`
           gatsbyImageData
           description
         }
-        type
+        typology
         shortExcerpt
         cityCountry
       }

@@ -13,7 +13,7 @@ const SingleProject = ({ data }) => {
     architect,
     awards,
     year,
-    type,
+    typology,
     status,
     size,
     moduleContent,
@@ -29,20 +29,26 @@ const SingleProject = ({ data }) => {
     photoCredit,
     press,
     nonLinkedInfo,
-  } = data.contentfulProjectPage
+    principal,
+    projectLeader,
+  } = data.contentfulProject
   return (
     <Layout>
       <div className="project-header">
         <Link to="/projects">Projects</Link> |{" "}
-        <Link to="/projects">{type}</Link> |{" "}
-        <Link to="/projects">{geographicRegion}</Link>
+        {typology?.map((type, index) => (
+          <Link to="/projects" key={index}>
+            {type}
+          </Link>
+        ))}{" "}
+        | <Link to="/projects">{geographicRegion}</Link>
       </div>
       <HeroSlider images={heroImages}></HeroSlider>
       <ProjectIntro
         headline={headlineText?.headlineText}
         title={projectName}
         body={bodyText?.bodyText}
-        city={cityCountry}
+        city={cityCountry.toLowerCase()}
         year={year}
       ></ProjectIntro>
       <ProjectTable
@@ -52,6 +58,8 @@ const SingleProject = ({ data }) => {
         size={size}
         dateCompleted={dateCompleted}
         team={team}
+        principal={principal}
+        projectLeader={projectLeader}
         client={client}
         network={furtherNetworkLinks}
         photoCredit={photoCredit}
@@ -68,7 +76,7 @@ const SingleProject = ({ data }) => {
 
 export const query = graphql`
   query getSingleProject($slug: String) {
-    contentfulProjectPage(slug: { eq: $slug }) {
+    contentfulProject(slug: { eq: $slug }) {
       architect
       awards {
         ... on ContentfulExternalLink {
@@ -83,7 +91,7 @@ export const query = graphql`
         }
       }
       year
-      type
+      typology
       status
       size
       projectName
@@ -145,6 +153,16 @@ export const query = graphql`
       }
       photoCredit
       nonLinkedInfo
+      principal {
+        name
+        slug
+        id
+      }
+      projectLeader {
+        name
+        slug
+        id
+      }
     }
   }
 `

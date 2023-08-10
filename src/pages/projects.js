@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 const Projects = ({ data }) => {
-  const allProjects = data.allContentfulProjectPage.nodes
+  const allProjects = data.allContentfulProject.nodes
   const [projects, setProjects] = useState(allProjects)
   return (
     <Layout>
@@ -18,12 +18,19 @@ const Projects = ({ data }) => {
               <GatsbyImage
                 image={project.tileImage.gatsbyImageData}
                 alt={project.tileImage.description}
+                className="project-tile-image"
               ></GatsbyImage>
               <p className="tile-title">{project.projectName}</p>
             </Link>
             <div className="tile-tag-container">
-              <button className="tile-tag-btn">{project.type}</button>
-              <button className="tile-tag-btn">{project.cityCountry}</button>
+              {project.typology?.map((type, index) => (
+                <button className="tile-tag-btn" key={index}>
+                  {type}
+                </button>
+              ))}
+              <button className="tile-tag-btn">
+                {project.cityCountry.toLowerCase()}
+              </button>
             </div>
           </div>
         ))}
@@ -34,7 +41,7 @@ const Projects = ({ data }) => {
 
 export const query = graphql`
   query {
-    allContentfulProjectPage {
+    allContentfulProject {
       nodes {
         architect
         client
@@ -44,7 +51,7 @@ export const query = graphql`
         id
         projectName
         slug
-        type
+        typology
         year
         featured
         status

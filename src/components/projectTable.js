@@ -14,6 +14,8 @@ const ProjectTable = ({
   photoCredit,
   press,
   nonLinked,
+  principal,
+  projectLeader,
 }) => {
   return (
     <div className="project-table-container">
@@ -153,6 +155,44 @@ const ProjectTable = ({
                       key={index}
                     >
                       {item}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+          {principal && (
+            <div>
+              <hr className="faded-line"></hr>
+              <div className="project-table-row">
+                <p>Principal</p>
+                <div className="project-table-team">
+                  {principal.map(member => (
+                    <Link
+                      key={member.id}
+                      to={`/team/${member.slug}`}
+                      className="project-table-button"
+                    >
+                      {member.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+          {projectLeader && (
+            <div>
+              <hr className="faded-line"></hr>
+              <div className="project-table-row">
+                <p>Project Leader</p>
+                <div className="project-table-team">
+                  {projectLeader.map(member => (
+                    <Link
+                      key={member.id}
+                      to={`/team/${member.slug}`}
+                      className="project-table-button"
+                    >
+                      {member.name}
                     </Link>
                   ))}
                 </div>

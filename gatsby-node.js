@@ -14,7 +14,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const result = await graphql(
     `
       query GetData {
-        allContentfulProjectPage {
+        allContentfulProject {
           edges {
             node {
               slug
@@ -25,7 +25,7 @@ exports.createPages = async ({ actions, graphql }) => {
     `
   )
 
-  const projects = result.data.allContentfulProjectPage.edges
+  const projects = result.data.allContentfulProject.edges
 
   projects.forEach(({ node }, index) => {
     const projectSlug = node.slug
