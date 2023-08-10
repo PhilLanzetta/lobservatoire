@@ -453,6 +453,11 @@ SINGLE PROJECT PAGE
   left: 30vw;
 }
 
+.project-header-type {
+  display: inline-flex;
+  flex-direction: column;
+}
+
 .hero-slider-container {
   width: 100vw;
   height: 90vh;
@@ -736,7 +741,7 @@ SINGLE PROJECT PAGE
 }
 
 .related-container {
-  padding: 0 40px;
+  padding: 40px;
 }
 
 @media screen and (max-width: 675px) {
@@ -751,6 +756,11 @@ SINGLE PROJECT PAGE
   .module-image-container,
   .related-container {
     padding: 0 20px;
+  }
+
+  .related-container {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .title-city {
@@ -777,15 +787,16 @@ PROJECTS PAGE
 
 .projects-grid-container {
   padding: 40px;
-  padding-top: 110px;
+  padding-top: 180px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--spacing-sm);
+  gap: 2%;
 }
 
 .project-tile {
-  width: clamp(450px, 30%, 1500px);
+  width: clamp(400px, 32%, 1500px);
+  margin-bottom: var(--spacing-md);
 }
 
 .tile-title {
@@ -795,6 +806,7 @@ PROJECTS PAGE
 .tile-tag-container {
   display: flex;
   gap: var(--spacing-xs);
+  flex-wrap: wrap;
 }
 
 .tile-tag-btn {
@@ -807,6 +819,29 @@ PROJECTS PAGE
 
 .project-tile-image {
   aspect-ratio: 3 / 2;
+}
+
+.filter-icon {
+  border: 1px solid;
+  width: 30px;
+  border-radius: 100px;
+}
+
+.project-options-bar {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  top: 100px;
+  padding: 20px 40px;
+  z-index: 10;
+}
+
+.project-options-top {
+  position: fixed;
+  top: 100px;
+  z-index: 15;
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {

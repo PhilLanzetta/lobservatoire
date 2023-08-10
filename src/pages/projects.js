@@ -2,14 +2,39 @@ import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { RiLayoutGridFill } from "react-icons/ri"
+import { PiListBold } from "react-icons/pi"
+import { BsCircleFill, BsFilterLeft } from "react-icons/bs"
 
 const Projects = ({ data }) => {
   const allProjects = data.allContentfulProject.nodes
   const [projects, setProjects] = useState(allProjects)
+  const [view, setView] = useState("grid")
   return (
     <Layout>
       <div className="project-header">
         <Link to="/projects">Projects</Link>
+      </div>
+      <hr className="faded-line project-options-top"></hr>
+      <div className="project-options-bar">
+        <button>
+          <BsFilterLeft className="filter-icon"></BsFilterLeft>
+          <span>Filter</span>
+        </button>{" "}
+        <div>
+          <button>
+            <RiLayoutGridFill></RiLayoutGridFill>
+            <span>Grid</span>
+          </button>
+          <button>
+            <PiListBold></PiListBold>
+            <span>List</span>
+          </button>
+          <button>
+            <BsCircleFill></BsCircleFill>
+            <span>Map</span>
+          </button>
+        </div>
       </div>
       <div className="projects-grid-container">
         {projects.map(project => (
@@ -29,7 +54,7 @@ const Projects = ({ data }) => {
                 </button>
               ))}
               <button className="tile-tag-btn">
-                {project.cityCountry.toLowerCase()}
+                {project.cityCountry?.toLowerCase()}
               </button>
             </div>
           </div>

@@ -36,11 +36,13 @@ const SingleProject = ({ data }) => {
     <Layout>
       <div className="project-header">
         <Link to="/projects">Projects</Link> |{" "}
-        {typology?.map((type, index) => (
-          <Link to="/projects" key={index}>
-            {type}
-          </Link>
-        ))}{" "}
+        <div className="project-header-type">
+          {typology?.map((type, index) => (
+            <Link to="/projects" key={index}>
+              {type}
+            </Link>
+          ))}
+        </div>{" "}
         | <Link to="/projects">{geographicRegion}</Link>
       </div>
       <HeroSlider images={heroImages}></HeroSlider>
@@ -48,7 +50,7 @@ const SingleProject = ({ data }) => {
         headline={headlineText?.headlineText}
         title={projectName}
         body={bodyText?.bodyText}
-        city={cityCountry.toLowerCase()}
+        city={cityCountry?.toLowerCase()}
         year={year}
       ></ProjectIntro>
       <ProjectTable
