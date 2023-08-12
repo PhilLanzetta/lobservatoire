@@ -84,6 +84,10 @@ export const query = graphql`
           description
           gatsbyImageData
         }
+        exactLocation {
+          lat
+          lon
+        }
       }
     }
   }
