@@ -17,22 +17,56 @@ const Projects = ({ data }) => {
       </div>
       <hr className="faded-line project-options-top"></hr>
       <div className="project-options-bar">
-        <button>
+        <button className="project-options-button">
           <BsFilterLeft className="filter-icon"></BsFilterLeft>
-          <span>Filter</span>
-        </button>{" "}
-        <div>
-          <button>
+          Filter
+        </button>
+        <div className="filter-menu">
+          <div className="filter-column">
+            <button className="project-options-button">
+              <div className="check-box"></div> All Projects
+            </button>
+            <button className="project-options-button">
+              <div className="check-box"></div> Featured Projects
+            </button>
+            <button className="project-options-button">
+              <div className="check-box"></div> Recently Completed
+            </button>
+            <button className="project-options-button">
+              <div className="check-box"></div> In Progress
+            </button>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div className="project-view-options">
+          <button
+            className={`project-options-button ${
+              view === "grid" ? "" : "faded"
+            }`}
+            onClick={() => setView("grid")}
+          >
             <RiLayoutGridFill></RiLayoutGridFill>
-            <span>Grid</span>
+            Grid
           </button>
-          <button>
+          <button
+            className={`project-options-button ${
+              view === "list" ? "" : "faded"
+            }`}
+            onClick={() => setView("list")}
+          >
             <PiListBold></PiListBold>
-            <span>List</span>
+            List
           </button>
-          <button>
+          <button
+            className={`project-options-button ${
+              view === "map" ? "" : "faded"
+            }`}
+            onClick={() => setView("map")}
+          >
             <BsCircleFill></BsCircleFill>
-            <span>Map</span>
+            Map
           </button>
         </div>
       </div>

@@ -50,14 +50,18 @@ html {
 }
 
 .light {
-  background: var(--background-light-mode);
-  color: var(--color-light-mode);
+  --background: var(--background-light-mode);
+  --color: var(--color-light-mode);
+  background: var(--background);
+  color: var(--color);
   transition: all var(--md-transition);
 }
 
 .dark {
-  background: var(--background-dark-mode);
-  color: var(--color-dark-mode);
+  --background: var(--background-dark-mode);
+  background: var(--background);
+  color: var(--color);
+  --color: var(--color-dark-mode);
   transition: all var(--md-transition);
 }
 
@@ -84,6 +88,10 @@ a {
 .image {
   width: 100%;
   height: 100%;
+}
+
+.faded {
+  opacity: var(--less-opacity);
 }
 
 /*
@@ -823,8 +831,10 @@ PROJECTS PAGE
 
 .filter-icon {
   border: 1px solid;
-  width: 30px;
+  width: 40px;
+  height: 25px;
   border-radius: 100px;
+  opacity: var(--less-opacity);
 }
 
 .project-options-bar {
@@ -842,6 +852,40 @@ PROJECTS PAGE
   top: 100px;
   z-index: 15;
   width: 100%;
+}
+
+.project-options-button {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.project-view-options {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.filter-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  align-items: flex-start;
+}
+
+.filter-menu {
+  position: fixed;
+  left: 15vw;
+  background: var(--background);
+  color: var(--color);
+  transition: var(--fast-transition);
+  display: none;
+}
+
+.check-box {
+  width: 15px;
+  height: 10px;
+  border: 1px solid var(--color);
+  border-radius: 50px;
 }
 
 @media screen and (max-width: 600px) {
@@ -903,8 +947,8 @@ HOME
 
 @media screen and (max-width: 600px) {
   .home-slider-text {
-    left: 20px;
-    bottom: 20px;
+    padding: 20px;
+    padding-right: 0;
     max-width: 80%;
   }
 }
