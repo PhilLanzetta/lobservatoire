@@ -161,7 +161,7 @@ const Projects = ({ data }) => {
       <div className="project-options-bar">
         {filterOpen ? (
           <button
-            className="project-options-button"
+            className="project-options-button-top"
             onClick={() => setFilterOpen(!filterOpen)}
           >
             <GrFormClose className="filter-icon"></GrFormClose>
@@ -169,7 +169,7 @@ const Projects = ({ data }) => {
           </button>
         ) : (
           <button
-            className="project-options-button"
+            className="project-options-button-top"
             onClick={() => setFilterOpen(!filterOpen)}
           >
             <BsFilterLeft className="filter-icon"></BsFilterLeft>
@@ -265,7 +265,7 @@ const Projects = ({ data }) => {
         </div>
         <div className="project-view-options">
           <button
-            className={`project-options-button ${
+            className={`project-options-button-top ${
               view === "grid" ? "" : "faded"
             }`}
             onClick={() => setView("grid")}
@@ -274,7 +274,7 @@ const Projects = ({ data }) => {
             Grid
           </button>
           <button
-            className={`project-options-button ${
+            className={`project-options-button-top ${
               view === "list" ? "" : "faded"
             }`}
             onClick={() => setView("list")}
@@ -283,7 +283,7 @@ const Projects = ({ data }) => {
             List
           </button>
           <button
-            className={`project-options-button ${
+            className={`project-options-button-top ${
               view === "map" ? "" : "faded"
             }`}
             onClick={() => setView("map")}

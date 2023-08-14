@@ -856,6 +856,13 @@ PROJECTS PAGE
   width: 100%;
 }
 
+.project-options-button-top {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  text-align: left;
+}
+
 .project-options-button {
   display: inline-flex;
   gap: 5px;
@@ -1009,7 +1016,6 @@ PROJECTS PAGE
 @media screen and (max-width: 768px) {
   .filter-menu {
     flex-direction: column;
-    
   }
 
   .filter-column {
@@ -1033,7 +1039,7 @@ PROJECTS PAGE
 
   .projects-grid-container {
     padding: 20px;
-    padding-top: 125px;
+    padding-top: 135px;
   }
 
   .tile-tag-btn {
@@ -1046,18 +1052,27 @@ PROJECTS PAGE
   }
 
   .filter-menu {
-    font-size: var(--font-md);
+    font-size: var(--font-sm);
     left: 0;
     top: 110px;
     padding: 20px;
   }
 
   .current-filter-container {
-  top: 115px;
-  width: 100%;
-  padding: 10px 20px;
-  flex-wrap: wrap;
-}
+    top: 115px;
+    width: 100%;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    font-size: var(--font-sm-resp);
+  }
+
+  .filter-actions-container {
+    font-size: var(--font-sm-resp);
+  }
+
+  .project-options-button {
+    align-items: flex-start;
+  }
 }
 
 /*
