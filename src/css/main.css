@@ -135,6 +135,8 @@ header {
 
 .secondary-menu {
   position: fixed;
+  background: var(--background);
+  color: var(--color);
   top: 0;
   left: 0;
   width: 100%;
@@ -319,15 +321,7 @@ footer {
   font-size: var(--font-sm);
   line-height: 1.5;
   flex-wrap: wrap;
-}
-
-.light-gradient {
-  background: linear-gradient(#ffffff, #a8a8a8);
-  transition: all var(--md-transition);
-}
-
-.dark-gradient {
-  background: linear-gradient(#000000, #5c5959);
+  background: linear-gradient(var(--background), #5c5c5c);
   transition: all var(--md-transition);
 }
 

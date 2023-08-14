@@ -2,10 +2,10 @@ import React from "react"
 import { Link } from "gatsby"
 import { HiArrowUpRight } from "react-icons/hi2"
 
-const Footer = ({ isLight }) => {
+const Footer = () => {
   return (
     <footer
-      className={`footer ${isLight ? "light-gradient" : "dark-gradient"}`}
+      className={`footer`}
     >
       <div className="footer-column-logo">
         <Link to="/">

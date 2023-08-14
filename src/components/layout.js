@@ -13,18 +13,13 @@ import Footer from "./footer"
 
 const Layout = ({ children, location }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [isLight, setIsLight] = useState(true)
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
 
-  const toggleMode = () => {
-    setIsLight(!isLight)
-  }
-
   return (
-    <div className={isLight ? "light" : "dark"}>
+    <>
       <Header
         location={location}
         isOpen={isOpen}
@@ -32,7 +27,7 @@ const Layout = ({ children, location }) => {
       />
       <main>{children}</main>
       <Footer></Footer>
-    </div>
+    </>
   )
 }
 
