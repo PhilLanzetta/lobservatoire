@@ -2,8 +2,9 @@ import * as React from "react"
 import { useState } from "react"
 import { Link } from "gatsby"
 import useWindowSize from "../utils/useWindowSize"
+import { ThemeToggler } from "gatsby-plugin-dark-mode"
 
-const Header = ({ isOpen, toggleMenu, isLight, toggleMode, location }) => {
+const Header = ({ isOpen, toggleMenu, location }) => {
   const [aboutOpen, setAboutOpen] = useState(false)
   const [teamOpen, setTeamOpen] = useState(false)
   const [newsOpen, setNewsOpen] = useState(false)
@@ -51,14 +52,13 @@ const Header = ({ isOpen, toggleMenu, isLight, toggleMode, location }) => {
           </g>
         </svg>
       </Link>
-      <button className="header-menu-btn" onClick={isOpen ? handleClose : toggleMenu}>
+      <button
+        className="header-menu-btn"
+        onClick={isOpen ? handleClose : toggleMenu}
+      >
         {isOpen ? "Close" : "Menu"}
       </button>
-      <section
-        className={`secondary-menu ${isLight ? "light" : "dark"} ${
-          isOpen ? "show" : "hide"
-        }`}
-      >
+      <section className={`secondary-menu ${isOpen ? "show" : "hide"}`}>
         <div className="secondary-link-container">
           <Link to="/projects">Projects</Link>
           {mobile ? (
@@ -171,12 +171,25 @@ const Header = ({ isOpen, toggleMenu, isLight, toggleMode, location }) => {
             <Link to="/search">Search</Link>
           </div>
           <div className="theme-toggle-container">
-            <span>{isLight ? "Night mode" : "Day mode"}</span>
-            <button onClick={toggleMode} className="theme-toggle-btn">
-              <div
-                className={`toggle-btn ${isLight ? "" : "toggle-light"}`}
-              ></div>
-            </button>
+            <ThemeToggler>
+              {({ theme, toggleTheme }) => (
+                <>
+                  <span>{theme === "light" ? "Night mode" : "Day mode"}</span>
+                  <button
+                    onClick={() =>
+                      toggleTheme(theme === "light" ? "dark" : "light")
+                    }
+                    className="theme-toggle-btn"
+                  >
+                    <div
+                      className={`toggle-btn ${
+                        theme === "light" ? "" : "toggle-light"
+                      }`}
+                    ></div>
+                  </button>
+                </>
+              )}
+            </ThemeToggler>
           </div>
         </div>
       </section>

@@ -29,11 +29,9 @@ const Layout = ({ children, location }) => {
         location={location}
         isOpen={isOpen}
         toggleMenu={toggleMenu}
-        isLight={isLight}
-        toggleMode={toggleMode}
       />
       <main>{children}</main>
-      <Footer isLight={isLight}></Footer>
+      <Footer></Footer>
     </div>
   )
 }
