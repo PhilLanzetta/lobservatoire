@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
-import { GatsbyImage } from "gatsby-plugin-image"
 import { RiLayoutGridFill } from "react-icons/ri"
 import { PiListBold } from "react-icons/pi"
 import { BsCircleFill, BsFilterLeft, BsArrowRight } from "react-icons/bs"
 import { GrFormClose } from "react-icons/gr"
 import { AiOutlineLine } from "react-icons/ai"
+import ProjectGrid from "../components/projectGrid"
 
 const Projects = ({ data }) => {
   const allProjects = data.allContentfulProject.nodes
@@ -319,28 +319,34 @@ const Projects = ({ data }) => {
               <GrFormClose></GrFormClose>In Progress
             </button>
           )}
-          {typologyFilter.length &&
-            typologyFilter.map((item, index) => (
-              <button
-                key={index}
-                className="current-filter-button"
-                onClick={() => setFilterOpen(true)}
-              >
-                <GrFormClose></GrFormClose>
-                {item}
-              </button>
-            ))}
-          {regionFilter.length &&
-            regionFilter.map((item, index) => (
-              <button
-                key={index}
-                className="current-filter-button"
-                onClick={() => setFilterOpen(true)}
-              >
-                <GrFormClose></GrFormClose>
-                {item}
-              </button>
-            ))}
+          {typologyFilter.length > 0 && (
+            <>
+              {typologyFilter.map((item, index) => (
+                <button
+                  key={index}
+                  className="current-filter-button"
+                  onClick={() => setFilterOpen(true)}
+                >
+                  <GrFormClose></GrFormClose>
+                  {item}
+                </button>
+              ))}
+            </>
+          )}
+          {regionFilter.length > 0 && (
+            <>
+              {regionFilter.map((item, index) => (
+                <button
+                  key={index}
+                  className="current-filter-button"
+                  onClick={() => setFilterOpen(true)}
+                >
+                  <GrFormClose></GrFormClose>
+                  {item}
+                </button>
+              ))}
+            </>
+          )}
           <button
             className="current-filter-button"
             onClick={() => handleClearAll()}
@@ -349,36 +355,7 @@ const Projects = ({ data }) => {
           </button>
         </div>
       )}
-      <div className="projects-grid-container">
-        {projects ? (
-          projects.map(project => (
-            <div key={project.id} className="project-tile">
-              <Link to={`/projects/${project.slug}`}>
-                <GatsbyImage
-                  image={project.tileImage?.gatsbyImageData}
-                  alt={project.tileImage?.description}
-                  className="project-tile-image"
-                ></GatsbyImage>
-                <p className="tile-title">{project.projectName}</p>
-              </Link>
-              <div className="tile-tag-container">
-                {project.typology?.map((type, index) => (
-                  <button className="tile-tag-btn" key={index}>
-                    {type}
-                  </button>
-                ))}
-                <button className="tile-tag-btn">
-                  {project.cityCountry?.toLowerCase()}
-                </button>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div>
-            <p>Sorry, no projects match</p>
-          </div>
-        )}
-      </div>
+      {view === "grid" && <ProjectGrid projects={projects}></ProjectGrid>}
     </Layout>
   )
 }
