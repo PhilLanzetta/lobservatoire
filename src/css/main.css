@@ -986,6 +986,7 @@ PROJECTS PAGE
   border: solid 1px var(--color);
   padding: 3px 8px;
   border-radius: 100px;
+  text-transform: capitalize;
 }
 
 @media screen and (max-width: 1250px) {

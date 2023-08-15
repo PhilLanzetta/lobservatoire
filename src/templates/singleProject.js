@@ -38,12 +38,12 @@ const SingleProject = ({ data }) => {
         <Link to="/projects">Projects</Link> |{" "}
         <div className="project-header-type">
           {typology?.map((type, index) => (
-            <Link to="/projects" key={index}>
+            <Link to="/projects" key={index} state={{ typologyFilter: [type] }}>
               {type}
             </Link>
           ))}
         </div>{" "}
-        | <Link to="/projects">{geographicRegion}</Link>
+        | <Link to="/projects" state={{regionFilter: [geographicRegion]}}>{geographicRegion}</Link>
       </div>
       <HeroSlider images={heroImages}></HeroSlider>
       <ProjectIntro

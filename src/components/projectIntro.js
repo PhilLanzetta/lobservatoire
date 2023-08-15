@@ -1,6 +1,7 @@
 import React from "react"
 import { marked } from "marked"
 import { Fade } from "react-awesome-reveal"
+import { Link } from "gatsby"
 import useWindowSize from "../utils/useWindowSize"
 
 const ProjectIntro = ({ headline, title, body, city, year }) => {
@@ -12,9 +13,13 @@ const ProjectIntro = ({ headline, title, body, city, year }) => {
         <article className="project-intro-top">
           <div className="title-city">
             <h1>{title}</h1>
-            <p>{city}</p>
+            <Link to="/projects" state={{ city: city }}>
+              {city}
+            </Link>
           </div>
-          <p>{year}</p>
+          <Link to="/projects" state={{ year: year }}>
+            {year}
+          </Link>
         </article>
         <article>
           {headline && (

@@ -8,7 +8,7 @@ import { GrFormClose } from "react-icons/gr"
 import { AiOutlineLine } from "react-icons/ai"
 import ProjectGrid from "../components/projectGrid"
 
-const Projects = ({ data }) => {
+const Projects = ({ data, location }) => {
   const allProjects = data.allContentfulProject.nodes
   const thisYear = new Date().getFullYear()
   const [filterOpen, setFilterOpen] = useState(false)
@@ -17,15 +17,23 @@ const Projects = ({ data }) => {
   const [recent, setRecent] = useState(false)
   const [featuredFilter, setFeaturedFilter] = useState(false)
   const [progressFilter, setProgressFilter] = useState(false)
-  const [typologyFilter, setTypologyFilter] = useState([])
-  const [regionFilter, setRegionFilter] = useState([])
+  const [typologyFilter, setTypologyFilter] = useState(
+    location.state?.typologyFilter || []
+  )
+  const [regionFilter, setRegionFilter] = useState(
+    location.state?.regionFilter || []
+  )
+  const [city, setCity] = useState(location.state?.city || "")
+  const [year, setYear] = useState(location.state?.year || null)
 
   const isDisabled =
     !recent &&
     !featuredFilter &&
     !progressFilter &&
     !typologyFilter.length &&
-    !regionFilter.length
+    !regionFilter.length &&
+    !city &&
+    !year
 
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index
@@ -55,6 +63,14 @@ const Projects = ({ data }) => {
     if (featuredFilter) {
       return [...array, array.filter(item => item.featured)]
     } else return array
+  }
+
+  const filterByCity = array => {
+    return array.filter(item => item.cityCountry?.toLowerCase() === city)
+  }
+
+  const filterByYear = array => {
+    return array.filter(item => item.year === year)
   }
 
   const filterByType = array => {
@@ -116,8 +132,15 @@ const Projects = ({ data }) => {
         .reduce((a, b) => a.concat(b), [])
         .filter(onlyUnique)
     }
+    if (city) {
+      result = filterByCity(result)
+      result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
+    }
+    if (year) {
+      result = filterByYear(result)
+      result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
+    }
     setProjects(result)
-    setFilterOpen(false)
   }
 
   const handleClearAll = () => {
@@ -126,6 +149,8 @@ const Projects = ({ data }) => {
     setRecent(false)
     setTypologyFilter([])
     setRegionFilter([])
+    setCity("")
+    setYear(null)
     setProjects(allProjects)
   }
 
@@ -141,16 +166,12 @@ const Projects = ({ data }) => {
     .sort()
 
   useEffect(() => {
-    if (
-      !recent &&
-      !featuredFilter &&
-      !progressFilter &&
-      !typologyFilter.length &&
-      !regionFilter.length
-    ) {
+    if (isDisabled) {
       setProjects(allProjects)
-    } else return
-  }, [recent, featuredFilter, typologyFilter, regionFilter, progressFilter])
+    } else {
+      handleFilter()
+    }
+  }, [isDisabled])
 
   return (
     <Layout>
@@ -249,7 +270,10 @@ const Projects = ({ data }) => {
               <button
                 disabled={isDisabled}
                 className="filter-apply"
-                onClick={() => handleFilter()}
+                onClick={() => {
+                  handleFilter()
+                  setFilterOpen(false)
+                }}
               >
                 Apply
               </button>
@@ -346,6 +370,24 @@ const Projects = ({ data }) => {
                 </button>
               ))}
             </>
+          )}
+          {city && (
+            <button
+              className="current-filter-button"
+              onClick={() => setFilterOpen(true)}
+            >
+              <GrFormClose></GrFormClose>
+              {city}
+            </button>
+          )}
+          {year && (
+            <button
+              className="current-filter-button"
+              onClick={() => setFilterOpen(true)}
+            >
+              <GrFormClose></GrFormClose>
+              Year: {year}
+            </button>
           )}
           <button
             className="current-filter-button"
