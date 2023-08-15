@@ -633,7 +633,7 @@ SINGLE PROJECT PAGE
   align-items: flex-start;
 }
 
-.project-table-row p:first-of-type {
+.project-table-row > p:first-of-type {
   opacity: var(--less-opacity);
   width: clamp(80px, 45%, 200px);
   padding: 0 4px;

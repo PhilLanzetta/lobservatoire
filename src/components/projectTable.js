@@ -103,18 +103,18 @@ const ProjectTable = ({
                 <p>Awards</p>
                 <div className="project-table-awards">
                   {awards.map(award =>
-                    award.url ? (
+                    award.link ? (
                       <a
                         key={award.id}
-                        href={award.url}
+                        href={award.link}
                         target="_blank"
                         rel="noreferrer"
                       >
-                        {award.linkText}
+                        {award.awardName}, {award.year}
                       </a>
                     ) : (
-                      <Link key={award.id} to={award.slug}>
-                        {award.linkText}
+                      <Link key={award.id} to={`/awards#${award.year}`}>
+                        {award.awardName}, {award.year}
                       </Link>
                     )
                   )}
@@ -223,7 +223,11 @@ const ProjectTable = ({
               <hr className="faded-line"></hr>
               <div className="project-table-row">
                 <p>Photo Credit</p>
-                <p>{photoCredit}</p>
+                <div className="project-table-awards">
+                  {photoCredit.map((credit, index) => (
+                    <p key={index}>{credit}</p>
+                  ))}
+                </div>
               </div>
             </div>
           )}

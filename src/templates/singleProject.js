@@ -80,23 +80,17 @@ export const query = graphql`
   query getSingleProject($slug: String) {
     contentfulProject(slug: { eq: $slug }) {
       architect
-      awards {
-        ... on ContentfulExternalLink {
-          id
-          linkText
-          url
-        }
-        ... on ContentfulInternalLink {
-          id
-          linkText
-          slug
-        }
-      }
       year
       typology
       status
       size
       projectName
+      awards {
+        id
+        awardName
+        year
+        link
+      }
       moduleContent {
         ... on ContentfulSingleColumnImage {
           singleId: id
