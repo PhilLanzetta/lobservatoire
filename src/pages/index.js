@@ -28,7 +28,8 @@ export const query = graphql`
         }
         typology
         shortExcerpt
-        cityCountry
+        city
+        country
       }
     }
   }

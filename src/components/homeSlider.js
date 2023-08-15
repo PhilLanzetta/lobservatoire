@@ -96,7 +96,9 @@ const HomeSlider = ({ images }) => {
                     {type}
                   </Link>
                 ))}
-                <Link className="tile-tag-btn">{image.cityCountry}</Link>
+                <Link className="tile-tag-btn">
+                  {image.city}, {image.country}
+                </Link>
               </div>
             </div>
           </div>

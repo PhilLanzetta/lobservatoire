@@ -21,7 +21,8 @@ const SingleProject = ({ data }) => {
     headlineText,
     geographicRegion,
     dateCompleted,
-    cityCountry,
+    city,
+    country,
     bodyText,
     team,
     client,
@@ -50,7 +51,8 @@ const SingleProject = ({ data }) => {
         headline={headlineText?.headlineText}
         title={projectName}
         body={bodyText?.bodyText}
-        city={cityCountry?.toLowerCase()}
+        city={city?.toLowerCase()}
+        country={country}
         year={year}
       ></ProjectIntro>
       <ProjectTable
@@ -132,7 +134,8 @@ export const query = graphql`
       geographicRegion
       dateCompleted
       client
-      cityCountry
+      city
+      country
       bodyText {
         bodyText
       }

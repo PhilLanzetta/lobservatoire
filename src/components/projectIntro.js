@@ -4,7 +4,7 @@ import { Fade } from "react-awesome-reveal"
 import { Link } from "gatsby"
 import useWindowSize from "../utils/useWindowSize"
 
-const ProjectIntro = ({ headline, title, body, city, year }) => {
+const ProjectIntro = ({ headline, title, body, city, country, year }) => {
   const { width } = useWindowSize()
   const mobile = width < 601
   return (
@@ -15,7 +15,7 @@ const ProjectIntro = ({ headline, title, body, city, year }) => {
             <h1>{title}</h1>
             <Link to="/projects" state={{ city: city }}>
               {city}
-            </Link>
+            </Link>, <Link to="#">{country}</Link>
           </div>
           <Link to="/projects" state={{ year: year }}>
             {year}

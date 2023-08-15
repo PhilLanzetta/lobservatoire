@@ -68,7 +68,7 @@ const Projects = ({ data, location }) => {
   }
 
   const filterByCity = array => {
-    return array.filter(item => item.cityCountry?.toLowerCase() === city)
+    return array.filter(item => item.city?.toLowerCase() === city)
   }
 
   const filterByYear = array => {
@@ -430,7 +430,8 @@ export const query = graphql`
         client
         furtherNetworkLinks
         geographicRegion
-        cityCountry
+        city
+        country
         id
         projectName
         slug

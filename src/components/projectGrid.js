@@ -27,7 +27,7 @@ const ProjectGrid = ({ projects, team }) => {
                 </button>
               ))}
               <button className="tile-tag-btn">
-                {project.cityCountry?.toLowerCase()}
+                {project.city}, {project.country}
               </button>
             </div>
           </div>

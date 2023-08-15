@@ -69,7 +69,8 @@ export const query = graphql`
           description
         }
         typology
-        cityCountry
+        city
+        country
         slug
       }
       biography {
