@@ -34,7 +34,7 @@ const SingleProject = ({ data }) => {
   } = data.contentfulProject
   return (
     <Layout>
-      <div className="project-header">
+      <div className="page-header">
         <Link to="/projects">Projects</Link> |{" "}
         <div className="project-header-type">
           {typology?.map((type, index) => (

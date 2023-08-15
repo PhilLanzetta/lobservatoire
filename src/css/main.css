@@ -446,7 +446,7 @@ SINGLE PROJECT PAGE
 ==========
 */
 
-.project-header {
+.page-header {
   position: fixed;
   mix-blend-mode: difference;
   color: #fff;
@@ -747,7 +747,7 @@ SINGLE PROJECT PAGE
 }
 
 @media screen and (max-width: 675px) {
-  .project-header {
+  .page-header {
     display: none;
   }
 }
@@ -843,7 +843,7 @@ PROJECTS PAGE
   background: var(--background);
 }
 
-.project-options-top {
+.page-header-bottom {
   position: fixed;
   top: 100px;
   z-index: 15;
@@ -1118,4 +1118,16 @@ HOME
     padding-right: 0;
     max-width: 80%;
   }
+}
+
+/*
+==========
+TEAM MEMBER
+==========
+*/
+
+.team-member-container {
+  padding: 40px;
+  padding-top: 140px;
+  
 }

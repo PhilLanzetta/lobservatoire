@@ -21,11 +21,19 @@ exports.createPages = async ({ actions, graphql }) => {
             }
           }
         }
+        allContentfulTeamMember {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
       }
     `
   )
 
   const projects = result.data.allContentfulProject.edges
+  const teamMembers = result.data.allContentfulTeamMember.edges
 
   projects.forEach(({ node }, index) => {
     const projectSlug = node.slug
@@ -37,4 +45,16 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
   })
+
+  teamMembers.forEach(({ node }, index) => {
+    const teamMemberSlug = node.slug
+    createPage({
+      path: `/team/${teamMemberSlug}`,
+      component: path.resolve(`./src/templates/teamMember.js`),
+      context: {
+        slug: teamMemberSlug,
+      },
+    })
+  })
+
 }
