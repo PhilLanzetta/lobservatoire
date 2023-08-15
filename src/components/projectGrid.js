@@ -2,9 +2,13 @@ import React from "react"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-const ProjectGrid = ({ projects }) => {
+const ProjectGrid = ({ projects, team }) => {
   return (
-    <div className="projects-grid-container">
+    <div
+      className={`projects-grid-container ${
+        team ? "" : "projects-page-padding"
+      }`}
+    >
       {projects ? (
         projects.map(project => (
           <div key={project.id} className="project-tile">

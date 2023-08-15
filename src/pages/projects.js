@@ -25,6 +25,7 @@ const Projects = ({ data, location }) => {
   )
   const [city, setCity] = useState(location.state?.city || "")
   const [year, setYear] = useState(location.state?.year || null)
+  const [architect, setArchitect] = useState(location.state?.architect || "")
 
   const isDisabled =
     !recent &&
@@ -33,7 +34,8 @@ const Projects = ({ data, location }) => {
     !typologyFilter.length &&
     !regionFilter.length &&
     !city &&
-    !year
+    !year &&
+    !architect
 
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index
@@ -71,6 +73,10 @@ const Projects = ({ data, location }) => {
 
   const filterByYear = array => {
     return array.filter(item => item.year === year)
+  }
+
+  const filterByArchitect = array => {
+    return array.filter(item => item.architect === architect)
   }
 
   const filterByType = array => {
@@ -140,6 +146,10 @@ const Projects = ({ data, location }) => {
       result = filterByYear(result)
       result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
     }
+    if (architect) {
+      result = filterByArchitect(result)
+      result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
+    }
     setProjects(result)
   }
 
@@ -151,6 +161,7 @@ const Projects = ({ data, location }) => {
     setRegionFilter([])
     setCity("")
     setYear(null)
+    setArchitect("")
     setProjects(allProjects)
   }
 
@@ -171,14 +182,14 @@ const Projects = ({ data, location }) => {
     } else {
       handleFilter()
     }
-  }, [isDisabled])
+  }, [])
 
   return (
     <Layout>
       <div className="project-header">
         <Link to="/projects">Projects</Link>
       </div>
-      <hr className="faded-line project-options-top"></hr>
+      <hr className="faded-line page-header-bottom"></hr>
       <div className="project-options-bar">
         {filterOpen ? (
           <button
@@ -389,6 +400,15 @@ const Projects = ({ data, location }) => {
               Year: {year}
             </button>
           )}
+          {architect && (
+            <button
+              className="current-filter-button"
+              onClick={() => setFilterOpen(true)}
+            >
+              <GrFormClose></GrFormClose>
+              {architect}
+            </button>
+          )}
           <button
             className="current-filter-button"
             onClick={() => handleClearAll()}
@@ -420,7 +440,7 @@ export const query = graphql`
         status
         tileImage {
           description
-          gatsbyImageData
+          gatsbyImageData(width: 400)
         }
         exactLocation {
           lat

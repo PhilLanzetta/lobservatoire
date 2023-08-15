@@ -2,10 +2,14 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { marked } from "marked"
+import ProjectGrid from "../components/projectGrid"
 
 const TeamMember = ({ data }) => {
   const { name, title, headShot, project, biography } =
     data.contentfulTeamMember
+
+  const endsInS = name.charAt(name.length - 1) === "s"
   return (
     <Layout>
       <div className="page-header">
@@ -14,14 +18,38 @@ const TeamMember = ({ data }) => {
       </div>
       <hr className="faded-line page-header-bottom"></hr>
       <div className="team-member-container">
-        <div>
-          {headShot && (
-            <GatsbyImage
-              image={headShot.gatsbyImageData}
-              alt={headShot.description}
-            ></GatsbyImage>
-          )}
+        <div className="team-member-info">
+          <div className="team-member-photo-container">
+            {headShot && (
+              <GatsbyImage
+                image={headShot.gatsbyImageData}
+                alt={headShot.description}
+              ></GatsbyImage>
+            )}
+          </div>
+          <div className="team-member-text">
+            <div className="team-member-heading">
+              <h1>{name}</h1>
+              <h2>{title}</h2>
+            </div>
+            {biography && (
+              <div
+                className="team-member-bio"
+                dangerouslySetInnerHTML={{
+                  __html: marked.parse(biography.biography),
+                }}
+              ></div>
+            )}
+          </div>
         </div>
+        {project.length > 0 && (
+          <div className="team-member-project-container">
+            <p className="upper team-member-project-preface">{`${name}${
+              endsInS ? "'" : "'s"
+            } projects`}</p>
+            <ProjectGrid projects={project} team></ProjectGrid>
+          </div>
+        )}
       </div>
     </Layout>
   )
@@ -37,11 +65,12 @@ export const query = graphql`
       project {
         projectName
         tileImage {
-          gatsbyImageData(width: 300)
+          gatsbyImageData(width: 400)
           description
         }
         typology
         cityCountry
+        slug
       }
       biography {
         biography

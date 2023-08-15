@@ -26,7 +26,11 @@ const ProjectTable = ({
               <hr className="faded-line"></hr>
               <div className="project-table-row">
                 <p>Architect</p>
-                <Link to="/projects" className="project-table-button">
+                <Link
+                  to="/projects"
+                  className="project-table-button"
+                  state={{ architect: architect }}
+                >
                   {architect}
                 </Link>
               </div>

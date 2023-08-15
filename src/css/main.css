@@ -788,12 +788,15 @@ PROJECTS PAGE
 */
 
 .projects-grid-container {
-  padding: 40px;
-  padding-top: 200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2%;
+}
+
+.projects-page-padding {
+  padding: 40px;
+  padding-top: 200px;
 }
 
 .project-tile {
@@ -821,6 +824,7 @@ PROJECTS PAGE
 
 .project-tile-image {
   aspect-ratio: 3 / 2;
+  width: 100%;
 }
 
 .filter-icon {
@@ -829,6 +833,10 @@ PROJECTS PAGE
   height: 25px;
   border-radius: 100px;
   opacity: var(--less-opacity);
+}
+
+.filter-icon path {
+  stroke: inherit;
 }
 
 .project-options-bar {
@@ -846,7 +854,7 @@ PROJECTS PAGE
 .page-header-bottom {
   position: fixed;
   top: 100px;
-  z-index: 15;
+  z-index: 110;
   width: 100%;
 }
 
@@ -989,6 +997,10 @@ PROJECTS PAGE
   text-transform: capitalize;
 }
 
+.current-filter-button path {
+  stroke: inherit;
+}
+
 @media screen and (max-width: 1250px) {
   .project-tile {
     width: 49%;
@@ -1032,7 +1044,7 @@ PROJECTS PAGE
     width: 100%;
   }
 
-  .projects-grid-container {
+  .projects-page-padding {
     padding: 20px;
     padding-top: 135px;
   }
@@ -1044,6 +1056,10 @@ PROJECTS PAGE
   .project-options-bar {
     padding: 10px 20px;
     padding-top: 80px;
+  }
+
+  .page-header-bottom {
+    top: 65px;
   }
 
   .filter-menu {
@@ -1127,7 +1143,73 @@ TEAM MEMBER
 */
 
 .team-member-container {
+  position: relative;
   padding: 40px;
   padding-top: 140px;
-  
+}
+
+.team-member-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.team-member-photo-container {
+  width: 40%;
+}
+
+.team-member-text {
+  display: flex;
+  flex-direction: column;
+  max-width: 55%;
+  gap: var(--spacing-md);
+}
+
+.team-member-heading h1,
+.team-member-heading h2 {
+  font-weight: var(--primary-weight);
+}
+
+.team-member-heading h1 {
+  font-size: var(--font-md-resp);
+  text-transform: uppercase;
+}
+
+.team-member-heading h2 {
+  font-size: calc(var(--font-md-resp) - 5px);
+  opacity: var(--less-opacity);
+}
+
+.team-member-bio p {
+  margin-bottom: var(--spacing-md);
+  line-height: var(--lofty-line-height);
+}
+
+.team-member-project-preface {
+  margin-bottom: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+@media screen and (max-width: 600px) {
+  .team-member-container {
+    padding: 20px;
+    padding-top: 160px;
+  }
+
+  .team-member-heading {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+  }
+
+  .team-member-info {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .team-member-text,
+  .team-member-photo-container {
+    width: 100%;
+    max-width: 100%;
+  }
 }
