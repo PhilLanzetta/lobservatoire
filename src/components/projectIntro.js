@@ -13,9 +13,15 @@ const ProjectIntro = ({ headline, title, body, city, country, year }) => {
         <article className="project-intro-top">
           <div className="title-city">
             <h1>{title}</h1>
-            <Link to="/projects" state={{ city: city }}>
-              {city}
-            </Link>, <Link to="#">{country}</Link>
+            <div>
+              <Link to="/projects" state={{ city: city }}>
+                {city}
+              </Link>
+              ,{" "}
+              <Link to="/projects" state={{ country: country }}>
+                {country}
+              </Link>
+            </div>
           </div>
           <Link to="/projects" state={{ year: year }}>
             {year}

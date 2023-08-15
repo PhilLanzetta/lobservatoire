@@ -26,6 +26,7 @@ const Projects = ({ data, location }) => {
   const [city, setCity] = useState(location.state?.city || "")
   const [year, setYear] = useState(location.state?.year || null)
   const [architect, setArchitect] = useState(location.state?.architect || "")
+  const [country, setCountry] = useState(location.state?.country || "")
 
   const isDisabled =
     !recent &&
@@ -35,7 +36,8 @@ const Projects = ({ data, location }) => {
     !regionFilter.length &&
     !city &&
     !year &&
-    !architect
+    !architect &&
+    !country
 
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index
@@ -77,6 +79,10 @@ const Projects = ({ data, location }) => {
 
   const filterByArchitect = array => {
     return array.filter(item => item.architect === architect)
+  }
+
+  const filterByCountry = array => {
+    return array.filter(item => item.country === country)
   }
 
   const filterByType = array => {
@@ -150,6 +156,10 @@ const Projects = ({ data, location }) => {
       result = filterByArchitect(result)
       result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
     }
+    if (country) {
+      result = filterByCountry(result)
+      result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
+    }
     setProjects(result)
   }
 
@@ -162,6 +172,7 @@ const Projects = ({ data, location }) => {
     setCity("")
     setYear(null)
     setArchitect("")
+    setCountry("")
     setProjects(allProjects)
   }
 
@@ -407,6 +418,15 @@ const Projects = ({ data, location }) => {
             >
               <GrFormClose></GrFormClose>
               {architect}
+            </button>
+          )}
+          {country && (
+            <button
+              className="current-filter-button"
+              onClick={() => setFilterOpen(true)}
+            >
+              <GrFormClose></GrFormClose>
+              {country}
             </button>
           )}
           <button

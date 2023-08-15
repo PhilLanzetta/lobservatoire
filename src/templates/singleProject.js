@@ -51,7 +51,7 @@ const SingleProject = ({ data }) => {
         headline={headlineText?.headlineText}
         title={projectName}
         body={bodyText?.bodyText}
-        city={city?.toLowerCase()}
+        city={city}
         country={country}
         year={year}
       ></ProjectIntro>
