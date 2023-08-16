@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-const ProjectGrid = ({ projects, team }) => {
+const ProjectGrid = ({ projects, team, setCity, handleTypeFilter }) => {
   return (
     <div
       className={`projects-grid-container ${
@@ -22,11 +22,16 @@ const ProjectGrid = ({ projects, team }) => {
             </Link>
             <div className="tile-tag-container">
               {project.typology?.map((type, index) => (
-                <button className="tile-tag-btn" key={index}>
+                <button className="tile-tag-btn" key={index} onClick={() => handleTypeFilter(type)}>
                   {type}
                 </button>
               ))}
-              <button className="tile-tag-btn">
+              <button
+                className="tile-tag-btn"
+                onClick={() => {
+                  setCity(project.city)
+                }}
+              >
                 {project.city}, {project.country}
               </button>
             </div>

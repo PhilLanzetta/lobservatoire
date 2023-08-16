@@ -33,6 +33,7 @@ const SingleProject = ({ data }) => {
     principal,
     projectLeader,
   } = data.contentfulProject
+
   return (
     <Layout>
       <div className="page-header">
@@ -44,7 +45,10 @@ const SingleProject = ({ data }) => {
             </Link>
           ))}
         </div>{" "}
-        | <Link to="/projects" state={{regionFilter: [geographicRegion]}}>{geographicRegion}</Link>
+        |{" "}
+        <Link to="/projects" state={{ regionFilter: [geographicRegion] }}>
+          {geographicRegion}
+        </Link>
       </div>
       <HeroSlider images={heroImages}></HeroSlider>
       <ProjectIntro
@@ -146,9 +150,10 @@ export const query = graphql`
       }
       furtherNetworkLinks
       press {
-        linkText
         id
-        url
+        link
+        publication
+        publicationDate
       }
       photoCredit
       nonLinkedInfo

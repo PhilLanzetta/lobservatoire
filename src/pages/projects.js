@@ -27,6 +27,8 @@ const Projects = ({ data, location }) => {
   const [year, setYear] = useState(location.state?.year || null)
   const [architect, setArchitect] = useState(location.state?.architect || "")
   const [country, setCountry] = useState(location.state?.country || "")
+  const [network, setNetwork] = useState(location.state?.network || "")
+  const [client, setClient] = useState(location.state?.client || "")
 
   const isDisabled =
     !recent &&
@@ -37,7 +39,9 @@ const Projects = ({ data, location }) => {
     !city &&
     !year &&
     !architect &&
-    !country
+    !country &&
+    !network &&
+    !client
 
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index
@@ -70,7 +74,7 @@ const Projects = ({ data, location }) => {
   }
 
   const filterByCity = array => {
-    return array.filter(item => item.city?.toLowerCase() === city)
+    return array.filter(item => item.city === city)
   }
 
   const filterByYear = array => {
@@ -83,6 +87,14 @@ const Projects = ({ data, location }) => {
 
   const filterByCountry = array => {
     return array.filter(item => item.country === country)
+  }
+
+  const filterByNetwork = array => {
+    return array.filter(item => item.furtherNetworkLinks?.includes(network))
+  }
+
+  const filterByClient = array => {
+    return array.filter(item => item.client?.includes(client))
   }
 
   const filterByType = array => {
@@ -160,6 +172,14 @@ const Projects = ({ data, location }) => {
       result = filterByCountry(result)
       result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
     }
+    if (network) {
+      result = filterByNetwork(result)
+      result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
+    }
+    if (client) {
+      result = filterByClient(result)
+      result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
+    }
     setProjects(result)
   }
 
@@ -173,6 +193,8 @@ const Projects = ({ data, location }) => {
     setYear(null)
     setArchitect("")
     setCountry("")
+    setNetwork("")
+    setClient("")
     setProjects(allProjects)
   }
 
@@ -193,7 +215,7 @@ const Projects = ({ data, location }) => {
     } else {
       handleFilter()
     }
-  }, [])
+  }, [city, typologyFilter])
 
   return (
     <Layout>
@@ -429,6 +451,24 @@ const Projects = ({ data, location }) => {
               {country}
             </button>
           )}
+          {network && (
+            <button
+              className="current-filter-button"
+              onClick={() => setFilterOpen(true)}
+            >
+              <GrFormClose></GrFormClose>
+              {network.split(": ")[1]}
+            </button>
+          )}
+          {client && (
+            <button
+              className="current-filter-button"
+              onClick={() => setFilterOpen(true)}
+            >
+              <GrFormClose></GrFormClose>
+              {client}
+            </button>
+          )}
           <button
             className="current-filter-button"
             onClick={() => handleClearAll()}
@@ -437,7 +477,15 @@ const Projects = ({ data, location }) => {
           </button>
         </div>
       )}
-      {view === "grid" && <ProjectGrid projects={projects}></ProjectGrid>}
+      {view === "grid" && (
+        <ProjectGrid
+          projects={projects}
+          handleTypeFilter={handleTypeFilter}
+          setCity={setCity}
+          setCountry={setCountry}
+          handleFilter={handleFilter}
+        ></ProjectGrid>
+      )}
     </Layout>
   )
 }

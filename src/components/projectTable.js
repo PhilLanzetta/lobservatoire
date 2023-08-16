@@ -45,7 +45,11 @@ const ProjectTable = ({
                     <hr className="faded-line"></hr>
                     <div className="project-table-row">
                       <p>{linkArray[0]}</p>
-                      <Link to="/projects" className="project-table-button">
+                      <Link
+                        to="/projects"
+                        className="project-table-button"
+                        state={{ network: networkLink }}
+                      >
                         {linkArray[1]}
                       </Link>
                     </div>
@@ -135,11 +139,12 @@ const ProjectTable = ({
                   {press.map(press => (
                     <a
                       key={press.id}
-                      href={press.url}
+                      href={press.link}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {press.linkText}
+                      {press.publication},{" "}
+                      {new Date(press.publicationDate).getFullYear()}
                     </a>
                   ))}
                 </div>
@@ -157,6 +162,7 @@ const ProjectTable = ({
                       to="/projects"
                       className="project-table-button"
                       key={index}
+                      state={{ client: client }}
                     >
                       {item}
                     </Link>
