@@ -2,6 +2,7 @@ import React from "react"
 import { useState, useEffect } from "react"
 import Slider from "react-slick"
 import { GatsbyImage } from "gatsby-plugin-image"
+import useWindowSize from "../utils/useWindowSize"
 
 function NextArrow(props) {
   const { onClick } = props
@@ -68,6 +69,9 @@ function PrevArrow(props) {
 const HeroSlider = ({ images }) => {
   const [imageIndex, setImageIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const { height } = useWindowSize()
+  const imgHeight = height * .9;
+
   const settings = {
     infinite: true,
     centerMode: true,
@@ -85,9 +89,7 @@ const HeroSlider = ({ images }) => {
 
   return (
     <div className="hero-slider-container">
-      <div
-        className="load"
-      ></div>
+      <div className="load"></div>
       <Slider {...settings} className="hero-slider">
         {images.map((image, index) => {
           const imgWidth =
@@ -98,7 +100,7 @@ const HeroSlider = ({ images }) => {
                 <GatsbyImage
                   image={image.gatsbyImageData}
                   alt={image.description}
-                  style={{ width: `${imgWidth}vh` }}
+                  style={{ width: `${imgWidth}vh`, height: `${imgHeight}px`}}
                   className="hero-slide-image"
                 ></GatsbyImage>
                 {index === imageIndex ? (
