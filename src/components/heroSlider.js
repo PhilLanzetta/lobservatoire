@@ -69,8 +69,6 @@ function PrevArrow(props) {
 const HeroSlider = ({ images }) => {
   const [imageIndex, setImageIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
-  const { height } = useWindowSize()
-  const imgHeight = height * .9;
 
   const settings = {
     infinite: true,
@@ -100,7 +98,7 @@ const HeroSlider = ({ images }) => {
                 <GatsbyImage
                   image={image.gatsbyImageData}
                   alt={image.description}
-                  style={{ width: `${imgWidth}vh`, height: `${imgHeight}px`}}
+                  style={{ width: `${imgWidth}vh`}}
                   className="hero-slide-image"
                 ></GatsbyImage>
                 {index === imageIndex ? (

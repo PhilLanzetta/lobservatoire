@@ -99,13 +99,24 @@ const HomeSlider = ({ images }) => {
               </Link>
               <div className="tile-tag-container">
                 {image.typology.map((type, index) => (
-                  <Link className="tile-tag-btn" key={index}>
+                  <Link
+                    className="tile-tag-btn"
+                    key={index}
+                    to="/projects"
+                    state={{ typologyFilter: [type] }}
+                  >
                     {type}
                   </Link>
                 ))}
-                <Link className="tile-tag-btn">
-                  {image.city}, {image.country}
-                </Link>
+                <div className="tile-tag-btn">
+                  <Link to="/projects" state={{ city: image.city }}>
+                    {image.city}
+                  </Link>
+                  ,{" "}
+                  <Link to="/projects" state={{ country: image.country }}>
+                    {image.country}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

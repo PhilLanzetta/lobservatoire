@@ -1129,11 +1129,63 @@ HOME
   margin-bottom: var(--spacing-xs);
 }
 
+.home-container {
+  padding: 10% 5%;
+  display: flex;
+}
+
+.home-preface-link {
+  display: block;
+  width: 30%;
+  text-transform: uppercase;
+  line-height: var(--lofty-line-height);
+}
+
+.home-headline p {
+  font-size: var(--font-md-resp);
+  font-weight: var(--thin-weight);
+  line-height: var(--lofty-line-height);
+}
+
+.home-right {
+  width: 70%;
+}
+
+.home-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
+  opacity: var(--less-opacity);
+  text-transform: uppercase;
+  transition: all var(--fast-transition);
+}
+
+.home-link:hover {
+  opacity: 1;
+  transition: all var(--fast-transition);
+}
+
 @media screen and (max-width: 600px) {
   .home-slider-text {
     padding: 20px;
     padding-right: 0;
     max-width: 80%;
+  }
+
+  .home-container {
+    padding: 40px 20px;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .home-preface-link,
+  .home-right {
+    width: 100%;
+  }
+
+  .home-link {
+    margin-top: var(--spacing-md);
   }
 }
 
