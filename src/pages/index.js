@@ -17,6 +17,8 @@ const IndexPage = ({ location, data }) => {
       .split("\n\n")[1]
       .slice(0, 298)
 
+  const teamHeadline = data.contentfulTeamPageTeamHeadlineTextNode.teamHeadline
+
   console.log(philosophy)
   return (
     <Layout location={location}>
@@ -48,6 +50,19 @@ const IndexPage = ({ location, data }) => {
           </Link>
         </div>
       </div>
+      <div className="home-container">
+        <Link to="/team" className="home-preface-link">
+          Team
+        </Link>
+        <div className="home-right">
+          <div className="home-headline">
+            <p>{teamHeadline}</p>
+          </div>
+          <Link to="/team" className="home-link">
+            <BsArrowRight></BsArrowRight> Learn More
+          </Link>
+        </div>
+      </div>
     </Layout>
   )
 }
@@ -75,6 +90,9 @@ export const query = graphql`
     }
     contentfulAboutLObservatoirePhilosophyTextNode {
       philosophy
+    }
+    contentfulTeamPageTeamHeadlineTextNode {
+      teamHeadline
     }
   }
 `

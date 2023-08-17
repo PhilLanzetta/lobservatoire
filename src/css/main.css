@@ -1129,7 +1129,8 @@ HOME
   margin-bottom: var(--spacing-xs);
 }
 
-.home-container {
+.home-container,
+.team-members-container {
   padding: 10% 5%;
   display: flex;
 }
@@ -1147,7 +1148,8 @@ HOME
   line-height: var(--lofty-line-height);
 }
 
-.home-right {
+.home-right,
+.team-right {
   width: 70%;
 }
 
@@ -1180,7 +1182,8 @@ HOME
   }
 
   .home-preface-link,
-  .home-right {
+  .home-right,
+  .team-right {
     width: 100%;
   }
 
@@ -1241,6 +1244,24 @@ TEAM MEMBER
 .team-member-project-preface {
   margin-bottom: var(--spacing-md);
   margin-top: var(--spacing-md);
+}
+
+.team-right {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.herve-abbridged {
+  width: 85%;
+}
+
+.herve-abbridged p {
+  margin-bottom: var(--spacing-md);
+  line-height: var(--lofty-line-height);
+}
+
+.team-members-container {
+  flex-direction: column;
 }
 
 @media screen and (max-width: 600px) {
