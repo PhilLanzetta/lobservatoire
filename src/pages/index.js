@@ -8,11 +8,11 @@ import HomeSlider from "../components/homeSlider"
 const IndexPage = ({ location, data }) => {
   const homeImages = data.allContentfulProject.nodes
   return (
-  <Layout location={location}>
-    <HomeSlider images={homeImages}></HomeSlider>
-  </Layout>
-)}
-
+    <Layout location={location}>
+      <HomeSlider images={homeImages}></HomeSlider>
+    </Layout>
+  )
+}
 
 export const query = graphql`
   query {
@@ -22,7 +22,7 @@ export const query = graphql`
         id
         projectName
         slug
-        tileImage {
+        heroImages {
           gatsbyImageData
           description
         }

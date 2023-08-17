@@ -81,8 +81,8 @@ const HomeSlider = ({ images }) => {
         {images.map((image, index) => (
           <div className="home-slide-container" key={index}>
             <GatsbyImage
-              image={image.tileImage.gatsbyImageData}
-              alt={image.tileImage.description}
+              image={image.heroImages[0]?.gatsbyImageData}
+              alt={image.heroImages[0]?.description}
               className="home-slide-image"
             ></GatsbyImage>
             <div className="home-slider-text">

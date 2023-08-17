@@ -507,7 +507,7 @@ export const query = graphql`
         year
         featured
         status
-        tileImage {
+        heroImages {
           description
           gatsbyImageData(width: 400)
         }

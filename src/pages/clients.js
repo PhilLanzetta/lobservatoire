@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
+import Layout from "../components/layout"
 
 const Clients = ({ data }) => {
   function onlyUnique(value, index, array) {
@@ -21,7 +22,7 @@ const Clients = ({ data }) => {
   console.log(alphabetHeaders)
 
   return (
-    <div>
+    <Layout>
       {alphabetHeaders.map((letter, index) => (
         <div key={index}>
           <p>{letter}</p>
@@ -36,13 +37,13 @@ const Clients = ({ data }) => {
                   </li>
                 )
               } else {
-                return
+                return null
               }
             })}
           </ul>
         </div>
       ))}
-    </div>
+    </Layout>
   )
 }
 

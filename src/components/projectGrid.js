@@ -14,8 +14,8 @@ const ProjectGrid = ({ projects, team, setCity, handleTypeFilter }) => {
           <div key={project.id} className="project-tile">
             <Link to={`/projects/${project.slug}`}>
               <GatsbyImage
-                image={project.tileImage?.gatsbyImageData}
-                alt={project.tileImage?.description}
+                image={project.heroImages[0]?.gatsbyImageData}
+                alt={project.heroImages[0]?.description}
                 className="project-tile-image"
               ></GatsbyImage>
               <p className="tile-title">{project.projectName}</p>

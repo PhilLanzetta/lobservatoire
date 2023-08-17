@@ -162,7 +162,7 @@ const ProjectTable = ({
                       to="/projects"
                       className="project-table-button"
                       key={index}
-                      state={{ client: client }}
+                      state={{ client: item }}
                     >
                       {item}
                     </Link>

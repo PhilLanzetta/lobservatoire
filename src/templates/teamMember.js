@@ -64,7 +64,7 @@ export const query = graphql`
       }
       project {
         projectName
-        tileImage {
+        heroImages {
           gatsbyImageData(width: 400)
           description
         }
