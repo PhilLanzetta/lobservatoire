@@ -1098,12 +1098,6 @@ HOME
 
 .home-slider-container {
   width: 100vw;
-  position: absolute;
-}
-
-.home-slider-padding {
-  height: 100vh;
-  width: 100%;
 }
 
 .home-slide-container {

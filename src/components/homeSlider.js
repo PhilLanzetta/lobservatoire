@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Slider from "react-slick"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
@@ -67,7 +67,14 @@ function PrevArrow(props) {
 }
 
 const HomeSlider = ({ images }) => {
-  const { height } = useWindowSize()
+  const [initialHeight, setInitialHeight] = useState(800)
+  const { height, width } = useWindowSize()
+  const mobile = width < 601
+
+  useEffect(() => {
+    setInitialHeight(height)
+  }, [])
+
   const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -78,11 +85,14 @@ const HomeSlider = ({ images }) => {
   }
 
   return (
-    <div className="home-slider-container" style={{ height: `${height}px` }}>
+    <div
+      className="home-slider-container"
+      style={{ height: `${mobile ? initialHeight + "px" : height + "px"}` }}
+    >
       <Slider
         {...settings}
         className="home-slider"
-        style={{ height: `${height}px` }}
+        style={{ height: `${mobile ? initialHeight + "px" : height + "px"}` }}
       >
         {images.map((image, index) => (
           <div className="home-slide-container" key={index}>
@@ -90,7 +100,9 @@ const HomeSlider = ({ images }) => {
               image={image.heroImage?.gatsbyImageData}
               alt={image.heroImage?.description}
               className="home-slide-image"
-              style={{ height: `${height}px` }}
+              style={{
+                height: `${mobile ? initialHeight + "px" : height + "px"}`,
+              }}
             ></GatsbyImage>
             <div className="home-slider-text">
               <Link to={`/projects/${image.slug}`} className="home-title-link">

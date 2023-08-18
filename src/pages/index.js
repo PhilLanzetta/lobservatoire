@@ -23,7 +23,6 @@ const IndexPage = ({ location, data }) => {
   return (
     <Layout location={location}>
       <HomeSlider images={homeImages}></HomeSlider>
-      <div className="home-slider-padding"></div>
       <div className="home-container">
         <Link to="/about" className="home-preface-link">
           About
