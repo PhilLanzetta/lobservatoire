@@ -87,8 +87,8 @@ const HomeSlider = ({ images }) => {
         {images.map((image, index) => (
           <div className="home-slide-container" key={index}>
             <GatsbyImage
-              image={image.heroImages[0]?.gatsbyImageData}
-              alt={image.heroImages[0]?.description}
+              image={image.heroImage?.gatsbyImageData}
+              alt={image.heroImage?.description}
               className="home-slide-image"
               style={{ height: `${height}px` }}
             ></GatsbyImage>

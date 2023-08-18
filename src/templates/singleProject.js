@@ -17,7 +17,8 @@ const SingleProject = ({ data }) => {
     status,
     size,
     moduleContent,
-    heroImages,
+    heroImage,
+    images,
     headlineText,
     geographicRegion,
     dateCompleted,
@@ -50,7 +51,7 @@ const SingleProject = ({ data }) => {
           {geographicRegion}
         </Link>
       </div>
-      <HeroSlider images={heroImages}></HeroSlider>
+      <HeroSlider images={images}></HeroSlider>
       <ProjectIntro
         headline={headlineText?.headlineText}
         title={projectName}
@@ -128,9 +129,15 @@ export const query = graphql`
           }
         }
       }
-      heroImages {
+      heroImage {
         description
         gatsbyImageData
+        id
+      }
+      images {
+        description
+        gatsbyImageData
+        id
       }
       headlineText {
         headlineText
@@ -146,6 +153,7 @@ export const query = graphql`
       team {
         name
         slug
+        primaryOffice
         id
       }
       furtherNetworkLinks
@@ -160,11 +168,13 @@ export const query = graphql`
       principal {
         name
         slug
+        primaryOffice
         id
       }
       projectLeader {
         name
         slug
+        primaryOffice
         id
       }
     }

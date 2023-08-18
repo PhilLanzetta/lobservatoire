@@ -177,15 +177,28 @@ const ProjectTable = ({
               <div className="project-table-row">
                 <p>Principal</p>
                 <div className="project-table-team">
-                  {principal.map(member => (
-                    <Link
-                      key={member.id}
-                      to={`/team/${member.slug}`}
-                      className="project-table-button"
-                    >
-                      {member.name}
-                    </Link>
-                  ))}
+                  {principal.map(member => {
+                    if (member.primaryOffice !== "No Longer Employed") {
+                      return (
+                        <Link
+                          key={member.id}
+                          to={`/team/${member.slug}`}
+                          className="project-table-button"
+                        >
+                          {member.name}
+                        </Link>
+                      )
+                    } else {
+                      return null
+                    }
+                  })}
+                  {principal.map(member => {
+                    if (member.primaryOffice === "No Longer Employed") {
+                      return <p key={member.id}>{member.name}</p>
+                    } else {
+                      return null
+                    }
+                  })}
                 </div>
               </div>
             </div>
@@ -196,15 +209,28 @@ const ProjectTable = ({
               <div className="project-table-row">
                 <p>Project Leader</p>
                 <div className="project-table-team">
-                  {projectLeader.map(member => (
-                    <Link
-                      key={member.id}
-                      to={`/team/${member.slug}`}
-                      className="project-table-button"
-                    >
-                      {member.name}
-                    </Link>
-                  ))}
+                  {projectLeader.map(member => {
+                    if (member.primaryOffice !== "No Longer Employed") {
+                      return (
+                        <Link
+                          key={member.id}
+                          to={`/team/${member.slug}`}
+                          className="project-table-button"
+                        >
+                          {member.name}
+                        </Link>
+                      )
+                    } else {
+                      return null
+                    }
+                  })}
+                  {projectLeader.map(member => {
+                    if (member.primaryOffice === "No Longer Employed") {
+                      return <p key={member.id}>{member.name}</p>
+                    } else {
+                      return null
+                    }
+                  })}
                 </div>
               </div>
             </div>
@@ -215,15 +241,28 @@ const ProjectTable = ({
               <div className="project-table-row">
                 <p>Team</p>
                 <div className="project-table-team">
-                  {team.map(member => (
-                    <Link
-                      key={member.id}
-                      to={`/team/${member.slug}`}
-                      className="project-table-button"
-                    >
-                      {member.name}
-                    </Link>
-                  ))}
+                  {team.map(member => {
+                    if (member.primaryOffice !== "No Longer Employed") {
+                      return (
+                        <Link
+                          key={member.id}
+                          to={`/team/${member.slug}`}
+                          className="project-table-button"
+                        >
+                          {member.name}
+                        </Link>
+                      )
+                    } else {
+                      return null
+                    }
+                  })}
+                  {team.map(member => {
+                    if (member.primaryOffice === "No Longer Employed") {
+                      return <p key={member.id}>{member.name}</p>
+                    } else {
+                      return null
+                    }
+                  })}
                 </div>
               </div>
             </div>

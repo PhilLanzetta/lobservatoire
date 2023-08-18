@@ -7,8 +7,8 @@ const ProjectTile = ({ project, setCity, handleTypeFilter }) => {
     <div key={project.id} className="project-tile">
       <Link to={`/projects/${project.slug}`}>
         <GatsbyImage
-          image={project.heroImages[0]?.gatsbyImageData}
-          alt={project.heroImages[0]?.description}
+          image={project.heroImage?.gatsbyImageData}
+          alt={project.heroImage?.description}
           className="project-tile-image"
         ></GatsbyImage>
         <p className="tile-title">{project.projectName}</p>

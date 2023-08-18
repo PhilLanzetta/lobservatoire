@@ -75,7 +75,7 @@ export const query = graphql`
         id
         projectName
         slug
-        heroImages {
+        heroImage {
           gatsbyImageData
           description
         }
