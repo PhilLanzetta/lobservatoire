@@ -493,7 +493,7 @@ const Projects = ({ data, location }) => {
 
 export const query = graphql`
   query {
-    allContentfulProject {
+    allContentfulProject(sort: { year: DESC }) {
       nodes {
         architect
         client

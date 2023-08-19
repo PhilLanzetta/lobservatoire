@@ -1129,8 +1129,7 @@ HOME
   margin-bottom: var(--spacing-xs);
 }
 
-.home-container,
-.team-members-container {
+.home-container {
   padding: 10% 5%;
   display: flex;
 }
@@ -1261,9 +1260,52 @@ TEAM MEMBER
 }
 
 .team-members-container {
+  display: flex;
+  padding: 0 5%;
   flex-direction: column;
 }
 
+.extra-padding-bottom {
+  padding-bottom: 40px;
+}
+
+.head-shot-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
+
+.head-shot {
+  width: 18%;
+  margin-top: var(--spacing-xs);
+  margin-bottom: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.team-location-container {
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 1000px) {
+  .team-right {
+    flex-direction: column;
+  }
+
+  .team-herve-photo {
+    width: 75%;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .herve-abbridged {
+    width: 100%;
+  }
+
+  .head-shot {
+    width: 23%;
+  }
+}
 @media screen and (max-width: 600px) {
   .team-member-container {
     padding: 20px;
@@ -1285,6 +1327,18 @@ TEAM MEMBER
   .team-member-photo-container {
     width: 100%;
     max-width: 100%;
+  }
+
+  .team-members-container {
+    padding: 20px;
+  }
+
+  .head-shot {
+    width: 48%;
+  }
+
+  .team-page {
+    padding-top: 65px;
   }
 }
 
@@ -1327,4 +1381,18 @@ About Page
 .about-text p {
   margin-bottom: var(--spacing-md);
   line-height: var(--lofty-line-height);
+}
+
+@media screen and (max-width: 600px) {
+  .about-page-headline p {
+    width: 100%;
+  }
+
+  .about-page {
+    padding: 20px;
+  }
+
+  .about-page-headline {
+    padding-top: 45px;
+  }
 }

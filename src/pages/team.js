@@ -10,44 +10,136 @@ const Team = ({ data }) => {
   const teamInfo = data.contentfulTeamPage
   const herve = data.herve
   const bioAbbridged = herve.biography.biography.split("BIBLIOGRAPHY")[0]
-  console.log(bioAbbridged)
+  const teamMembers = data.allContentfulTeamMember.nodes
+  const herveTeam = data.allContentfulTeamMember.nodes.filter(
+    member => member.name === "Hervé Descottes"
+  )[0]
+
   return (
     <Layout>
-      <GatsbyImage
-        image={teamInfo.teamPhoto.gatsbyImageData}
-        alt={teamInfo.teamPhoto.description}
-      ></GatsbyImage>
-      <div className="home-container">
-        <Link to="/team/herve-descottes" className="home-preface-link">
-          Hervé Descottes
-        </Link>
-        <div className="team-right">
-          <Link to={herve.slug}>
-            <GatsbyImage
-              image={teamInfo.hervePhoto.gatsbyImageData}
-              alt={teamInfo.hervePhoto.description}
-            ></GatsbyImage>
+      <div className="page-header">
+        <Link to="/team">Team</Link>
+      </div>
+      <hr className="faded-line page-header-bottom"></hr>
+      <div className="team-page">
+        <GatsbyImage
+          image={teamInfo.teamPhoto.gatsbyImageData}
+          alt={teamInfo.teamPhoto.description}
+        ></GatsbyImage>
+        <div className="home-container">
+          <Link to="/team/herve-descottes" className="home-preface-link">
+            Hervé Descottes
           </Link>
-          <div className="herve-abbridged">
-            <div
-              dangerouslySetInnerHTML={{ __html: marked.parse(bioAbbridged) }}
-            ></div>
-            <Link to={herve.slug} className="home-link">
-              <BsArrowRight></BsArrowRight> Learn More
+          <div className="team-right">
+            <Link to={herve.slug} className="team-herve-photo">
+              <GatsbyImage
+                image={teamInfo.hervePhoto.gatsbyImageData}
+                alt={teamInfo.hervePhoto.description}
+              ></GatsbyImage>
             </Link>
+            <div className="herve-abbridged">
+              <div
+                dangerouslySetInnerHTML={{ __html: marked.parse(bioAbbridged) }}
+              ></div>
+              <Link to={herve.slug} className="home-link">
+                <BsArrowRight></BsArrowRight> Learn More
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="team-members-container">
-        <p className="home-preface-link">Team Members</p>
-        <div>
-          <p className="home-preface-link">New York</p>
-        </div>
-        <div>
-          <p className="home-preface-link">Paris</p>
-        </div>
-        <div>
-          <p className="home-preface-link">Seoul</p>
+        <div className="team-members-container">
+          <p className="home-preface-link">Team Members</p>
+          <div className="team-location-container">
+            <p className="home-preface-link">New York</p>
+            <div className="head-shot-container">
+              <Link to={`team/${herveTeam.slug}`} className="head-shot">
+                <GatsbyImage
+                  image={herveTeam.headShot.gatsbyImageData}
+                  alt={herveTeam.headShot.description}
+                ></GatsbyImage>
+                <div>
+                  <p>{herveTeam.name}</p>
+                  <p className="faded">{herveTeam.title}</p>
+                </div>
+              </Link>
+              {teamMembers.map(member => {
+                if (
+                  member.primaryOffice === "New York" &&
+                  member.headShot &&
+                  member.name !== "Hervé Descottes"
+                ) {
+                  return (
+                    <Link
+                      to={`/team/${member.slug}`}
+                      key={member.id}
+                      className="head-shot"
+                    >
+                      <GatsbyImage
+                        image={member.headShot.gatsbyImageData}
+                        alt={member.headShot.description}
+                      ></GatsbyImage>
+                      <div>
+                        <p>{member.name}</p>
+                        <p className="faded">{member.title}</p>
+                      </div>
+                    </Link>
+                  )
+                } else {
+                  return null
+                }
+              })}
+            </div>
+          </div>
+          <div className="team-location-container">
+            <p className="home-preface-link">Paris</p>
+            <div className="head-shot-container">
+              {teamMembers.map(member => {
+                if (member.primaryOffice === "Paris" && member.headShot) {
+                  return (
+                    <Link
+                      to={`/team/${member.slug}`}
+                      key={member.id}
+                      className="head-shot"
+                    >
+                      <GatsbyImage
+                        image={member.headShot.gatsbyImageData}
+                        alt={member.headShot.description}
+                      ></GatsbyImage>
+                      <p>{member.name}</p>
+                      <p>{member.title}</p>
+                    </Link>
+                  )
+                } else {
+                  return null
+                }
+              })}
+            </div>
+          </div>
+          <div className="team-location-container">
+            <p className="home-preface-link">Seoul</p>
+            <div className="head-shot-container">
+              {teamMembers.map(member => {
+                if (member.primaryOffice === "Seoul" && member.headShot) {
+                  return (
+                    <Link
+                      to={`/team/${member.slug}`}
+                      key={member.id}
+                      className="head-shot"
+                    >
+                      <GatsbyImage
+                        image={member.headShot.gatsbyImageData}
+                        alt={member.headShot.description}
+                      ></GatsbyImage>
+                      <p>{member.name}</p>
+                      <p>{member.title}</p>
+                    </Link>
+                  )
+                } else {
+                  return null
+                }
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
@@ -73,6 +165,21 @@ export const query = graphql`
       slug
       biography {
         biography
+      }
+    }
+    allContentfulTeamMember(
+      filter: { primaryOffice: { ne: "No Longer Employed" } }
+    ) {
+      nodes {
+        headShot {
+          description
+          gatsbyImageData
+        }
+        id
+        name
+        slug
+        title
+        primaryOffice
       }
     }
   }
