@@ -3,7 +3,14 @@ import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import ProjectTile from "./projectTile"
 
-const ProjectGrid = ({ projects, team, setCity, handleTypeFilter }) => {
+const ProjectGrid = ({
+  projects,
+  team,
+  setCity,
+  setCountry,
+  handleTypeFilter,
+  setRegion,
+}) => {
   return (
     <div
       className={`projects-grid-container ${
@@ -15,7 +22,9 @@ const ProjectGrid = ({ projects, team, setCity, handleTypeFilter }) => {
           <ProjectTile
             project={project}
             setCity={setCity}
+            setCountry={setCountry}
             handleTypeFilter={handleTypeFilter}
+            setRegion={setRegion}
           ></ProjectTile>
         ))
       ) : (

@@ -2,7 +2,14 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
-const ProjectTile = ({ project, setCity, handleTypeFilter }) => {
+const ProjectTile = ({
+  project,
+  setCity,
+  handleTypeFilter,
+  setCountry,
+  setRegion,
+}) => {
+  const hasLocation = project.city || project.country
   return (
     <div key={project.id} className="project-tile">
       <Link to={`/projects/${project.slug}`}>
@@ -23,14 +30,24 @@ const ProjectTile = ({ project, setCity, handleTypeFilter }) => {
             {type}
           </button>
         ))}
-        <button
-          className="tile-tag-btn"
-          onClick={() => {
-            setCity(project.city)
-          }}
-        >
-          {project.city}, {project.country}
-        </button>
+        {hasLocation ? (
+          <button
+            className="tile-tag-btn"
+            onClick={() => {
+              setCity(project.city)
+              setCountry(project.country)
+            }}
+          >
+            {project.city}, {project.country}
+          </button>
+        ) : (
+          <button
+            className="tile-tag-btn"
+            onClick={() => setRegion(project.geographicRegion)}
+          >
+            {project.geographicRegion}
+          </button>
+        )}
       </div>
     </div>
   )

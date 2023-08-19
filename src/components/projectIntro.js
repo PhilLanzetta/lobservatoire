@@ -4,24 +4,48 @@ import { Fade } from "react-awesome-reveal"
 import { Link } from "gatsby"
 import useWindowSize from "../utils/useWindowSize"
 
-const ProjectIntro = ({ headline, title, body, city, country, year }) => {
+const ProjectIntro = ({
+  headline,
+  title,
+  body,
+  city,
+  country,
+  year,
+  state,
+  region,
+}) => {
   const { width } = useWindowSize()
   const mobile = width < 601
+  const hasLocation = city || state || country
   return (
     <section className="project-intro-container">
       <div className="project-intro-max-width">
         <article className="project-intro-top">
           <div className="title-city">
             <h1>{title}</h1>
-            <div>
-              <Link to="/projects" state={{ city: city }}>
-                {city}
+            {hasLocation ? (
+              <div>
+                {city && (
+                  <Link to="/projects" state={{ city: city }}>
+                    {city},
+                  </Link>
+                )}{" "}
+                {state && (
+                  <Link to="/projects" state={{ state: state }}>
+                    {state},
+                  </Link>
+                )}{" "}
+                {country && (
+                  <Link to="/projects" state={{ country: country }}>
+                    {country}
+                  </Link>
+                )}
+              </div>
+            ) : (
+              <Link to="/projects" state={{ regionFilter: [region] }}>
+                {region}
               </Link>
-              ,{" "}
-              <Link to="/projects" state={{ country: country }}>
-                {country}
-              </Link>
-            </div>
+            )}
           </div>
           <Link to="/projects" state={{ year: year }}>
             {year}

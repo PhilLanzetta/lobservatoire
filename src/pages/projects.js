@@ -215,7 +215,7 @@ const Projects = ({ data, location }) => {
     } else {
       handleFilter()
     }
-  }, [city, typologyFilter])
+  }, [city, typologyFilter, regionFilter])
 
   return (
     <Layout>
@@ -484,6 +484,7 @@ const Projects = ({ data, location }) => {
           setCity={setCity}
           setCountry={setCountry}
           handleFilter={handleFilter}
+          setRegion={handleLocaleFilter}
         ></ProjectGrid>
       )}
     </Layout>

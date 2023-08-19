@@ -16,8 +16,8 @@ const SingleProject = ({ data }) => {
     typology,
     status,
     size,
+    state,
     moduleContent,
-    heroImage,
     images,
     headlineText,
     geographicRegion,
@@ -57,8 +57,10 @@ const SingleProject = ({ data }) => {
         title={projectName}
         body={bodyText?.bodyText}
         city={city}
+        state={state}
         country={country}
         year={year}
+        region={geographicRegion}
       ></ProjectIntro>
       <ProjectTable
         architect={architect}
@@ -129,11 +131,6 @@ export const query = graphql`
           }
         }
       }
-      heroImage {
-        description
-        gatsbyImageData
-        id
-      }
       images {
         description
         gatsbyImageData
@@ -146,6 +143,7 @@ export const query = graphql`
       dateCompleted
       client
       city
+      state
       country
       bodyText {
         bodyText

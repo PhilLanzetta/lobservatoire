@@ -121,12 +121,11 @@ const HomeSlider = ({ images }) => {
                   </Link>
                 ))}
                 <div className="tile-tag-btn">
-                  <Link to="/projects" state={{ city: image.city }}>
-                    {image.city}
-                  </Link>
-                  ,{" "}
-                  <Link to="/projects" state={{ country: image.country }}>
-                    {image.country}
+                  <Link
+                    to="/projects"
+                    state={{ city: image.city, country: image.country }}
+                  >
+                    {image.city}, {image.country}
                   </Link>
                 </div>
               </div>
