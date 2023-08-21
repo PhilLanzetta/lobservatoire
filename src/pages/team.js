@@ -56,7 +56,7 @@ const Team = ({ data }) => {
           <div className="team-location-container">
             <p className="home-preface-link">New York</p>
             <div className="head-shot-container">
-              <Link to={`team/${herveTeam.slug}`} className="head-shot">
+              <Link to={`/team/${herveTeam.slug}`} className="head-shot">
                 <GatsbyImage
                   image={herveTeam.headShot.gatsbyImageData}
                   alt={herveTeam.headShot.description}
