@@ -130,7 +130,7 @@ const About = ({ data }) => {
           <p className="home-preface-link">Books</p>
           <div className="home-right about-books" id="books">
             {books.map(book => (
-              <div key={book.id}>
+              <div key={book.id} className="about-book-container">
                 <GatsbyImage
                   image={book.bookImage.gatsbyImageData}
                   alt={book.bookImage.description}
@@ -143,6 +143,14 @@ const About = ({ data }) => {
                     __html: marked.parse(book.description.description),
                   }}
                 ></div>
+                <a
+                  href={book.purchaseLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="home-link"
+                >
+                  <BsArrowRight></BsArrowRight>Order Here
+                </a>
               </div>
             ))}
           </div>
@@ -194,7 +202,7 @@ export const query = graphql`
         id
       }
     }
-    allContentfulBook {
+    allContentfulBook(sort: { publicationYear: DESC }) {
       nodes {
         id
         description {

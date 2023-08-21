@@ -1420,6 +1420,20 @@ About Page
   padding: var(--spacing-xs) 0;
 }
 
+.about-books {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-book-container {
+  width: 48%;
+}
+
+.about-book-container p {
+  margin-bottom: var(--spacing-md);
+  line-height: var(--lofty-line-height);
+}
+
 @media screen and (max-width: 600px) {
   .about-page-headline p {
     width: 100%;
@@ -1434,6 +1448,15 @@ About Page
   }
 
   .about-featured-link {
+    width: 100%;
+  }
+
+  .about-books {
+    flex-direction: column;
+    gap: var(--spacing-big);
+  }
+
+  .about-book-container {
     width: 100%;
   }
 }
