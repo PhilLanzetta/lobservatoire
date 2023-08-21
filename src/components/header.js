@@ -121,13 +121,13 @@ const Header = ({ isOpen, toggleMenu, location }) => {
                   teamOpen ? "" : "hide-drop-down"
                 }`}
               >
-                <Link to="/team">Hervé Descottes</Link>
-                <Link to="/team">Team Members</Link>
-                <Link to="/team">Careers</Link>
+                <Link to="/team/#herve">Hervé Descottes</Link>
+                <Link to="/team/#teamMembers">Team Members</Link>
+                <Link to="/team/#careers">Careers</Link>
               </aside>
             </section>
           ) : (
-            <Link to="/about">Team</Link>
+            <Link to="/team">Team</Link>
           )}
           {mobile ? (
             <section>

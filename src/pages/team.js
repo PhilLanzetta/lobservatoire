@@ -9,7 +9,8 @@ import { BsArrowRight } from "react-icons/bs"
 const Team = ({ data }) => {
   const teamInfo = data.contentfulTeamPage
   const herve = data.herve
-  const bioAbbridged = herve.biography.biography.split("BIBLIOGRAPHY")[0]
+  const bioAbbridged =
+    herve.teamMemberBio.teamMemberBio.split("BIBLIOGRAPHY")[0]
   const teamMembers = data.allContentfulTeamMember.nodes
   const herveTeam = data.allContentfulTeamMember.nodes.filter(
     member => member.name === "Hervé Descottes"
@@ -18,7 +19,10 @@ const Team = ({ data }) => {
   return (
     <Layout>
       <div className="page-header">
-        <Link to="/team">Team</Link>
+        <Link to="/team">Team</Link> |{" "}
+        <Link to="/team/#herve">Hervé Descottes</Link> |{" "}
+        <Link to="/team/#teamMembers">Team Members</Link> |{" "}
+        <Link to="/team/#careers">Careers</Link>
       </div>
       <hr className="faded-line page-header-bottom"></hr>
       <div className="team-page">
@@ -26,7 +30,7 @@ const Team = ({ data }) => {
           image={teamInfo.teamPhoto.gatsbyImageData}
           alt={teamInfo.teamPhoto.description}
         ></GatsbyImage>
-        <div className="home-container">
+        <div id="herve" className="home-container">
           <Link to="/team/herve-descottes" className="home-preface-link">
             Hervé Descottes
           </Link>
@@ -47,7 +51,7 @@ const Team = ({ data }) => {
             </div>
           </div>
         </div>
-        <div className="team-members-container">
+        <div className="team-members-container" id="teamMembers">
           <p className="home-preface-link">Team Members</p>
           <div className="team-location-container">
             <p className="home-preface-link">New York</p>
@@ -163,8 +167,8 @@ export const query = graphql`
     }
     herve: contentfulTeamMember(slug: { eq: "herve-descottes" }) {
       slug
-      biography {
-        biography
+      teamMemberBio {
+        teamMemberBio
       }
     }
     allContentfulTeamMember(
