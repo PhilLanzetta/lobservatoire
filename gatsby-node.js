@@ -5,7 +5,7 @@
  */
 
 /**
- * @type {import('gatsby').GatsbyNode['createPages']}
+ * @type {import('gatsby').GatsbyConfig}
  */
 const path = require("path")
 exports.createPages = async ({ actions, graphql }) => {
@@ -56,5 +56,4 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
   })
-
 }

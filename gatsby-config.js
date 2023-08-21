@@ -40,6 +40,7 @@ module.exports = {
       options: {
         spaceId: `7mbidstwva6z`,
         accessToken: process.env.CONTENTFUL_API_KEY,
+        enableTags: true,
       },
     },
   ],
