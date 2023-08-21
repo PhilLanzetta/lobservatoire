@@ -16,6 +16,7 @@ const ProjectTable = ({
   nonLinked,
   principal,
   projectLeader,
+  interiorDesigner,
 }) => {
   return (
     <div className="project-table-container">
@@ -32,6 +33,21 @@ const ProjectTable = ({
                   state={{ architect: architect }}
                 >
                   {architect}
+                </Link>
+              </div>
+            </div>
+          )}
+          {interiorDesigner && (
+            <div>
+              <hr className="faded-line"></hr>
+              <div className="project-table-row">
+                <p>Interior Designer</p>
+                <Link
+                  to="/projects"
+                  className="project-table-button"
+                  state={{ interiorDesigner: interiorDesigner }}
+                >
+                  {interiorDesigner}
                 </Link>
               </div>
             </div>

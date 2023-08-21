@@ -21,6 +21,7 @@ const SingleProject = ({ data }) => {
     images,
     headlineText,
     geographicRegion,
+    interiorDesigner,
     dateCompleted,
     city,
     country,
@@ -64,6 +65,7 @@ const SingleProject = ({ data }) => {
       ></ProjectIntro>
       <ProjectTable
         architect={architect}
+        interiorDesigner={interiorDesigner}
         awards={awards}
         status={status}
         size={size}
@@ -89,6 +91,7 @@ export const query = graphql`
   query getSingleProject($slug: String) {
     contentfulProject(slug: { eq: $slug }) {
       architect
+      interiorDesigner
       year
       typology
       status
