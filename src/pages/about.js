@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import { marked } from "marked"
 import Layout from "../components/layout"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { BsArrowRight } from "react-icons/bs"
 
 const About = ({ data }) => {
   const {
@@ -15,6 +16,8 @@ const About = ({ data }) => {
   } = data.contentfulAboutLObservatoire
 
   const awards = data.allContentfulAward.nodes
+
+  const books = data.allContentfulBook.nodes
 
   const firstHighlights = featuredProjects.slice(0, 3)
   const secondHighlights = featuredProjects.slice(3)
@@ -102,10 +105,10 @@ const About = ({ data }) => {
         <div className="home-container about-section">
           <p className="home-preface-link">Awards</p>
           <div className="home-right about-awards">
-            <h2 id="#awards">Our most recent awards</h2>
+            <h2 id="awards">Our most recent awards</h2>
             <div className="about-awards-container">
               {awards.map(award => (
-                <div>
+                <div key={award.id}>
                   <hr className="faded"></hr>
                   <div className="about-award">
                     <div>
@@ -118,6 +121,30 @@ const About = ({ data }) => {
               ))}
             </div>
             <hr className="faded"></hr>
+            <Link to="/awards" className="home-link">
+              <BsArrowRight></BsArrowRight> See All
+            </Link>
+          </div>
+        </div>
+        <div className="home-container about-section">
+          <p className="home-preface-link">Books</p>
+          <div className="home-right about-books" id="books">
+            {books.map(book => (
+              <div key={book.id}>
+                <GatsbyImage
+                  image={book.bookImage.gatsbyImageData}
+                  alt={book.bookImage.description}
+                ></GatsbyImage>
+                <p>
+                  {book.publisher}, {book.publicationYear}
+                </p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: marked.parse(book.description.description),
+                  }}
+                ></div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
