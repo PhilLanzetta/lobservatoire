@@ -110,7 +110,7 @@ const About = ({ data }) => {
                   <div className="about-award">
                     <div>
                       <p className="upper">{award.awardName}</p>
-                      <p>{award.project?.projectName}</p>
+                      <p>{award.associatedProject.projectName}</p>
                     </div>
                     <p className="faded">{award.year}</p>
                   </div>
@@ -160,6 +160,9 @@ export const query = graphql`
     allContentfulAward(limit: 4, sort: { year: DESC }) {
       nodes {
         awardName
+        associatedProject {
+          projectName
+        }
         year
         id
       }

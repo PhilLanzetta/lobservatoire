@@ -1,12 +1,3 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
- */
-
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
 const path = require("path")
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
