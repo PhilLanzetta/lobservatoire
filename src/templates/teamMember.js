@@ -10,6 +10,9 @@ const TeamMember = ({ data }) => {
     data.contentfulTeamMember
 
   const endsInS = name.charAt(name.length - 1) === "s"
+
+  const orderedProjects = project.sort((a, b) => (a.year < b.year ? 1 : -1))
+  
   return (
     <Layout>
       <div className="page-header">
@@ -42,12 +45,12 @@ const TeamMember = ({ data }) => {
             )}
           </div>
         </div>
-        {project.length > 0 && (
+        {orderedProjects.length > 0 && (
           <div className="team-member-project-container">
             <p className="upper team-member-project-preface">{`${name}${
               endsInS ? "'" : "'s"
             } projects`}</p>
-            <ProjectGrid projects={project} team></ProjectGrid>
+            <ProjectGrid projects={orderedProjects} team></ProjectGrid>
           </div>
         )}
       </div>
@@ -63,6 +66,7 @@ export const query = graphql`
         description
       }
       project {
+        id
         projectName
         heroImage {
           gatsbyImageData(width: 400)
@@ -71,7 +75,9 @@ export const query = graphql`
         typology
         city
         country
+        geographicRegion
         slug
+        year
       }
       teamMemberBio {
         teamMemberBio

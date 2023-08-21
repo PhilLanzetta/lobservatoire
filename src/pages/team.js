@@ -145,6 +145,9 @@ const Team = ({ data }) => {
             </div>
           </div>
         </div>
+        <div className="home-container" id="careers">
+          <p className="home-preface-link">Careers</p>
+        </div>
       </div>
     </Layout>
   )

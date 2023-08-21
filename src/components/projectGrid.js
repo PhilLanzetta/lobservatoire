@@ -20,6 +20,7 @@ const ProjectGrid = ({
       {projects ? (
         projects.map(project => (
           <ProjectTile
+            key={project.id}
             project={project}
             setCity={setCity}
             setCountry={setCountry}
