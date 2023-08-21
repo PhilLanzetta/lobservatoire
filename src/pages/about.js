@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { marked } from "marked"
 import Layout from "../components/layout"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const About = ({ data }) => {
   const {
@@ -12,6 +13,9 @@ const About = ({ data }) => {
     whoWeAreImage,
     philosophy,
   } = data.contentfulAboutLObservatoire
+
+  const firstHighlights = featuredProjects.slice(0, 3)
+  const secondHighlights = featuredProjects.slice(3)
 
   return (
     <Layout>
@@ -30,6 +34,18 @@ const About = ({ data }) => {
           id="top"
           className="about-page-headline"
         ></div>
+        <div className="about-featured">
+          {firstHighlights.map((item, index) => (
+            <Link to={item.slug} className="about-featured-link" key={index}>
+              <GatsbyImage
+                image={item.heroImage.gatsbyImageData}
+                alt={item.heroImage.description}
+                className="about-featured-image"
+              ></GatsbyImage>
+              <p>{item.projectName}</p>
+            </Link>
+          ))}
+        </div>
         <div className="home-container about-section">
           <p className="home-preface-link">Who We Are</p>
           <div
@@ -40,6 +56,15 @@ const About = ({ data }) => {
             className="home-right about-text"
           ></div>
         </div>
+        <div className="about-featured-link sierras">
+          <GatsbyImage
+            image={whoWeAreImage.image.gatsbyImageData}
+            alt={whoWeAreImage.image.description}
+            className="about-featured-image"
+          ></GatsbyImage>
+          <p>{whoWeAreImage.caption}</p>
+        </div>
+
         <div className="home-container about-section">
           <p className="home-preface-link">Our Philosophy</p>
           <div
@@ -49,6 +74,18 @@ const About = ({ data }) => {
             id="philosophy"
             className="home-right about-text"
           ></div>
+        </div>
+        <div className="about-featured">
+          {secondHighlights.map((item, index) => (
+            <Link to={item.slug} className="about-featured-link" key={index}>
+              <GatsbyImage
+                image={item.heroImage.gatsbyImageData}
+                alt={item.heroImage.description}
+                className="about-featured-image"
+              ></GatsbyImage>
+              <p>{item.projectName}</p>
+            </Link>
+          ))}
         </div>
         <div className="home-container about-section">
           <p className="home-preface-link">Our Design Approach</p>
