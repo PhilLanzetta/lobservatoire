@@ -26,6 +26,9 @@ const Projects = ({ data, location }) => {
   const [city, setCity] = useState(location.state?.city || "")
   const [year, setYear] = useState(location.state?.year || null)
   const [architect, setArchitect] = useState(location.state?.architect || "")
+  const [interiorDesigner, setInteriorDesigner] = useState(
+    location.state?.interiorDesigner || ""
+  )
   const [country, setCountry] = useState(location.state?.country || "")
   const [network, setNetwork] = useState(location.state?.network || "")
   const [client, setClient] = useState(location.state?.client || "")
@@ -39,6 +42,7 @@ const Projects = ({ data, location }) => {
     !city &&
     !year &&
     !architect &&
+    !interiorDesigner &&
     !country &&
     !network &&
     !client
@@ -83,6 +87,12 @@ const Projects = ({ data, location }) => {
 
   const filterByArchitect = array => {
     return array.filter(item => item.architect === architect)
+  }
+
+  const filterByInteriorDesigner = array => {
+    console.log(interiorDesigner)
+    console.log(array)
+    return array.filter(item => item.interiorDesigner === interiorDesigner)
   }
 
   const filterByCountry = array => {
@@ -168,6 +178,10 @@ const Projects = ({ data, location }) => {
       result = filterByArchitect(result)
       result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
     }
+    if (interiorDesigner) {
+      result = filterByInteriorDesigner(result)
+      result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
+    }
     if (country) {
       result = filterByCountry(result)
       result = result.reduce((a, b) => a.concat(b), []).filter(onlyUnique)
@@ -192,6 +206,7 @@ const Projects = ({ data, location }) => {
     setCity("")
     setYear(null)
     setArchitect("")
+    setInteriorDesigner("")
     setCountry("")
     setNetwork("")
     setClient("")
@@ -442,6 +457,15 @@ const Projects = ({ data, location }) => {
               {architect}
             </button>
           )}
+          {interiorDesigner && (
+            <button
+              className="current-filter-button"
+              onClick={() => setFilterOpen(true)}
+            >
+              <GrFormClose></GrFormClose>
+              {interiorDesigner}
+            </button>
+          )}
           {country && (
             <button
               className="current-filter-button"
@@ -496,6 +520,7 @@ export const query = graphql`
     allContentfulProject(sort: { year: DESC }) {
       nodes {
         architect
+        interiorDesigner
         client
         furtherNetworkLinks
         geographicRegion

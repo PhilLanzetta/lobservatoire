@@ -86,11 +86,11 @@ const Header = ({ isOpen, toggleMenu, location }) => {
                   aboutOpen ? "" : "hide-drop-down"
                 }`}
               >
-                <Link to="/about">Who we are</Link>
-                <Link to="/about">Our philosophy</Link>
-                <Link to="/about">Our design approach</Link>
-                <Link to="/about">Awards</Link>
-                <Link to="/about">Books</Link>
+                <Link to="/about/#who">Who we are</Link>
+                <Link to="/about/#philosophy">Our philosophy</Link>
+                <Link to="/about/#approach">Our design approach</Link>
+                <Link to="/about/#awards">Awards</Link>
+                <Link to="/about/#books">Books</Link>
               </aside>
             </section>
           ) : (

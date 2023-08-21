@@ -14,6 +14,8 @@ const About = ({ data }) => {
     philosophy,
   } = data.contentfulAboutLObservatoire
 
+  const awards = data.allContentfulAward.nodes
+
   const firstHighlights = featuredProjects.slice(0, 3)
   const secondHighlights = featuredProjects.slice(3)
 
@@ -96,6 +98,27 @@ const About = ({ data }) => {
             id="approach"
             className="home-right about-text"
           ></div>
+        </div>
+        <div className="home-container about-section">
+          <p className="home-preface-link">Awards</p>
+          <div className="home-right about-awards">
+            <h2 id="#awards">Our most recent awards</h2>
+            <div className="about-awards-container">
+              {awards.map(award => (
+                <div>
+                  <hr className="faded"></hr>
+                  <div className="about-award">
+                    <div>
+                      <p className="upper">{award.awardName}</p>
+                      <p>{award.project.projectName}</p>
+                    </div>
+                    <p className="faded">{award.year}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <hr className="faded"></hr>
+          </div>
         </div>
       </div>
     </Layout>

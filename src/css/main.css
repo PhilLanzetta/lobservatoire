@@ -98,6 +98,12 @@ a {
   opacity: var(--less-opacity);
 }
 
+h2 {
+  font-weight: var(--thin-weight);
+  font-size: var(--font-md-resp);
+  margin-bottom: var(--spacing-md);
+}
+
 /*
 ==========
 HEADER
@@ -1405,6 +1411,13 @@ About Page
 .about-featured-image {
   aspect-ratio: 3 / 2;
   margin-bottom: var(--spacing-xs);
+}
+
+.about-award {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
 }
 
 @media screen and (max-width: 600px) {
