@@ -31,7 +31,6 @@ const SingleProject = ({ data }) => {
     furtherNetworkLinks,
     photoCredit,
     press,
-    nonLinkedInfo,
     principal,
     projectLeader,
   } = data.contentfulProject
@@ -77,7 +76,6 @@ const SingleProject = ({ data }) => {
         network={furtherNetworkLinks}
         photoCredit={photoCredit}
         press={press}
-        nonLinked={nonLinkedInfo}
       ></ProjectTable>
       {moduleContent && (
         <ModuleContent moduleContent={moduleContent}></ModuleContent>
@@ -165,7 +163,6 @@ export const query = graphql`
         publicationDate
       }
       photoCredit
-      nonLinkedInfo
       principal {
         name
         slug

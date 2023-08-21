@@ -13,7 +13,6 @@ const ProjectTable = ({
   network,
   photoCredit,
   press,
-  nonLinked,
   principal,
   projectLeader,
   interiorDesigner,
@@ -68,22 +67,6 @@ const ProjectTable = ({
                       >
                         {linkArray[1]}
                       </Link>
-                    </div>
-                  </div>
-                )
-              })}
-            </>
-          )}
-          {nonLinked && (
-            <>
-              {nonLinked.map((item, index) => {
-                const itemArray = item.split(": ")
-                return (
-                  <div key={index}>
-                    <hr className="faded-line"></hr>
-                    <div className="project-table-row">
-                      <p>{itemArray[0]}</p>
-                      <p>{itemArray[1]}</p>
                     </div>
                   </div>
                 )
