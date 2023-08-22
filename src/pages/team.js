@@ -15,6 +15,7 @@ const Team = ({ data }) => {
   const herveTeam = data.allContentfulTeamMember.nodes.filter(
     member => member.name === "Hervé Descottes"
   )[0]
+  const careers = data.allContentfulCareerPosting.nodes
 
   return (
     <Layout>
@@ -147,6 +148,27 @@ const Team = ({ data }) => {
         </div>
         <div className="home-container" id="careers">
           <p className="home-preface-link">Careers</p>
+          <div className="team-right">
+            <div className="careers-container">
+              <h2
+                dangerouslySetInnerHTML={{
+                  __html: marked.parse(teamInfo.careerPreface.careerPreface),
+                }}
+              ></h2>
+              {careers.map(career => (
+                <div key={career.id}>
+                  <hr className="faded"></hr>
+                  <div className="career-posting">
+                    <p>{career.jobTitle}</p>
+                    <Link to={`careers/${career.slug}`} className="home-link career-apply">
+                      <BsArrowRight></BsArrowRight> Apply Here
+                    </Link>
+                  </div>
+                </div>
+              ))}
+              <hr className="faded"></hr>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
@@ -187,6 +209,13 @@ export const query = graphql`
         slug
         title
         primaryOffice
+      }
+    }
+    allContentfulCareerPosting(sort: { postingDate: DESC }) {
+      nodes {
+        id
+        jobTitle
+        slug
       }
     }
   }

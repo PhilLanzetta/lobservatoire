@@ -1246,6 +1246,15 @@ TEAM MEMBER
   line-height: var(--lofty-line-height);
 }
 
+.team-member-bio ul {
+  padding-left: 20px;
+  margin-bottom: var(--spacing-md);
+}
+
+.team-member-bio li {
+  margin-bottom: var(--spacing-xs);
+}
+
 .team-member-project-preface {
   margin-bottom: var(--spacing-md);
   margin-top: var(--spacing-md);
@@ -1292,6 +1301,13 @@ TEAM MEMBER
 
 .team-location-container {
   margin-top: 40px;
+}
+
+.career-posting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
 }
 
 @media screen and (max-width: 1000px) {
@@ -1345,6 +1361,10 @@ TEAM MEMBER
 
   .team-page {
     padding-top: 65px;
+  }
+
+  .career-apply {
+    margin-top: 0;
   }
 }
 
