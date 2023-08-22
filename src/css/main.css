@@ -1011,6 +1011,10 @@ PROJECTS PAGE
   stroke: inherit;
 }
 
+.project-list-view {
+  padding-top: 140px;
+}
+
 @media screen and (max-width: 1250px) {
   .project-tile {
     width: 49%;
@@ -1308,6 +1312,10 @@ TEAM MEMBER
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-xs) 0;
+}
+
+.careers-container {
+  width: 100%;
 }
 
 @media screen and (max-width: 1000px) {

@@ -7,6 +7,7 @@ import { BsCircleFill, BsFilterLeft, BsArrowRight } from "react-icons/bs"
 import { GrFormClose } from "react-icons/gr"
 import { AiOutlineLine } from "react-icons/ai"
 import ProjectGrid from "../components/projectGrid"
+import ProjectList from "../components/projectList"
 
 const Projects = ({ data, location }) => {
   const allProjects = data.allContentfulProject.nodes
@@ -510,6 +511,16 @@ const Projects = ({ data, location }) => {
           handleFilter={handleFilter}
           setRegion={handleLocaleFilter}
         ></ProjectGrid>
+      )}
+      {view === "list" && (
+        <ProjectList
+          projects={projects}
+          handleTypeFilter={handleTypeFilter}
+          setCity={setCity}
+          setCountry={setCountry}
+          handleFilter={handleFilter}
+          setRegion={handleLocaleFilter}
+        ></ProjectList>
       )}
     </Layout>
   )

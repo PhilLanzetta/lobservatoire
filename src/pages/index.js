@@ -19,7 +19,8 @@ const IndexPage = ({ location, data }) => {
 
   const teamHeadline = data.contentfulTeamPageTeamHeadlineTextNode.teamHeadline
 
-  console.log(philosophy)
+  const careers = data.allContentfulCareerPosting.nodes
+
   return (
     <Layout location={location}>
       <HomeSlider images={homeImages}></HomeSlider>
@@ -63,6 +64,28 @@ const IndexPage = ({ location, data }) => {
           </Link>
         </div>
       </div>
+      <div className="home-container" id="careers">
+        <p className="home-preface-link">Careers</p>
+        <div className="team-right">
+          <div className="careers-container">
+            {careers.map(career => (
+              <div key={career.id}>
+                <hr className="faded"></hr>
+                <div className="career-posting">
+                  <p>{career.jobTitle}</p>
+                  <Link
+                    to={`/careers/${career.slug}`}
+                    className="home-link career-apply"
+                  >
+                    <BsArrowRight></BsArrowRight> Apply Here
+                  </Link>
+                </div>
+              </div>
+            ))}
+            <hr className="faded"></hr>
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }
@@ -93,6 +116,13 @@ export const query = graphql`
     }
     contentfulTeamPageTeamHeadlineTextNode {
       teamHeadline
+    }
+    allContentfulCareerPosting(sort: { postingDate: DESC }) {
+      nodes {
+        id
+        jobTitle
+        slug
+      }
     }
   }
 `
