@@ -1,60 +1,57 @@
-import React, { useState, useRef, useLayoutEffect } from "react"
 import { Link } from "gatsby"
-import {
-  Table,
-  Header,
-  HeaderRow,
-  HeaderCell,
-  Body,
-  Row,
-  Cell,
-} from "@table-library/react-table-library/table"
-import {
-  useSort,
-  HeaderCellSort,
-} from "@table-library/react-table-library/sort"
-import { useTheme } from "@table-library/react-table-library/theme"
-import { getTheme } from "@table-library/react-table-library/baseline"
-import THEME from "./projectListTheme"
+import React from "react"
 
-const ProjectList = ({ projects }) => {
-  const theme = useTheme(getTheme());
-  console.log(projects)
-
+const ProjectList = ({
+  projects,
+  team,
+  handleTypeFilter,
+  setRegion,
+  setYear,
+  setProjects,
+}) => {
+  const orderByName = () => {
+    const reOrdered = projects.sort((a, b) =>
+      a.projectName > b.projectName ? 1 : -1
+    )
+    setProjects(reOrdered)
+  }
   return (
-    <div className="project-list-view">
-      <Table data={{ nodes: projects }} theme={theme}>
-        {tableList => (
-          <>
-            <Header>
-              <HeaderRow>
-                <HeaderCell sortKey="TITLE">Project</HeaderCell>
-                <HeaderCell sortKey="TYPOLOGY">Typology</HeaderCell>
-                <HeaderCell sortKey="LOCATION">Location</HeaderCell>
-                <HeaderCell sortKey="YEAR">Year</HeaderCell>
-              </HeaderRow>
-            </Header>
-            <Body>
-              {tableList.map(item => (
-                <React.Fragment key={item.id}>
-                  <Row item={item}>
-                    <Cell>
-                      <Link to={`/projects/${item.slug}`}>
-                        {item.projectName}
-                      </Link>
-                    </Cell>
-                    <Cell>
-                      <Link to={`/projects/${item.slug}`}>{item.typology}</Link>
-                    </Cell>
-                    <Cell>{item.geographicRegion}</Cell>
-                    <Cell>{item.year}</Cell>
-                  </Row>
-                </React.Fragment>
-              ))}
-            </Body>
-          </>
-        )}
-      </Table>
+    <div className="project-list-container">
+      <div className="project-list-header">
+        <button className="list-button" onClick={() => orderByName()}>
+          Project
+        </button>
+        <button className="list-button">Typology</button>
+        <button className="list-button">Location</button>
+        <button className="list-button">Year</button>
+      </div>
+      {projects.map(project => (
+        <div key={project.id} className="project-list-row">
+          <Link to={`projects/${project.slug}`} className="list-button">
+            {project.projectName}
+          </Link>
+          <div className="list-typology">
+            {project.typology.map((type, index) => (
+              <button
+                onClick={() => handleTypeFilter(type)}
+                key={index}
+                className="list-button"
+              >
+                {type}
+              </button>
+            ))}
+          </div>
+          <button
+            className="list-button"
+            onClick={() => setRegion(project.geographicRegion)}
+          >
+            {project.geographicRegion}
+          </button>
+          <button className="list-button" onClick={() => setYear(project.year)}>
+            {project.year}
+          </button>
+        </div>
+      ))}
     </div>
   )
 }

@@ -58,6 +58,7 @@ html {
   --color: var(--color-light-mode);
   background: var(--background);
   color: var(--color);
+  --fadedColor: rgba(0, 0, 0, 0.5);
   transition: all var(--md-transition);
 }
 
@@ -66,6 +67,7 @@ html {
   background: var(--background);
   color: var(--color);
   --color: var(--color-dark-mode);
+  --fadedColor: rgba(255, 255, 255, 0.5);
   transition: all var(--md-transition);
 }
 
@@ -802,11 +804,7 @@ PROJECTS PAGE
   flex-wrap: wrap;
   justify-content: center;
   gap: 2%;
-}
-
-.projects-page-padding {
   padding: 40px;
-  padding-top: 200px;
 }
 
 .project-tile {
@@ -1011,8 +1009,33 @@ PROJECTS PAGE
   stroke: inherit;
 }
 
-.project-list-view {
-  padding-top: 140px;
+.project-list-container {
+  padding: 40px 0;
+}
+
+.project-list-header,
+.project-list-row {
+  display: grid;
+  grid-template-columns: 5fr 5fr 3fr 1fr;
+  border-bottom: 1px solid var(--fadedColor);
+  padding: 10px 40px;
+}
+
+
+.project-list-header {
+  color: var(--fadedColor);
+}
+
+.list-typology {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.list-button {
+  text-align: left;
+  padding-right: 20px;
 }
 
 @media screen and (max-width: 1250px) {

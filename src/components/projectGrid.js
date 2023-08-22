@@ -13,9 +13,7 @@ const ProjectGrid = ({
 }) => {
   return (
     <div
-      className={`projects-grid-container ${
-        team ? "" : "projects-page-padding"
-      }`}
+      className="projects-grid-container"
     >
       {projects ? (
         projects.map(project => (

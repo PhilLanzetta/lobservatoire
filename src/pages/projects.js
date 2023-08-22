@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import { RiLayoutGridFill } from "react-icons/ri"
@@ -231,7 +231,7 @@ const Projects = ({ data, location }) => {
     } else {
       handleFilter()
     }
-  }, [city, typologyFilter, regionFilter])
+  }, [city, typologyFilter, regionFilter, year])
 
   return (
     <Layout>
@@ -503,24 +503,32 @@ const Projects = ({ data, location }) => {
         </div>
       )}
       {view === "grid" && (
-        <ProjectGrid
-          projects={projects}
-          handleTypeFilter={handleTypeFilter}
-          setCity={setCity}
-          setCountry={setCountry}
-          handleFilter={handleFilter}
-          setRegion={handleLocaleFilter}
-        ></ProjectGrid>
+        <>
+          <div style={{ height: "140px" }}></div>
+          <ProjectGrid
+            projects={projects}
+            handleTypeFilter={handleTypeFilter}
+            setCity={setCity}
+            setCountry={setCountry}
+            handleFilter={handleFilter}
+            setRegion={handleLocaleFilter}
+          ></ProjectGrid>
+        </>
       )}
       {view === "list" && (
-        <ProjectList
-          projects={projects}
-          handleTypeFilter={handleTypeFilter}
-          setCity={setCity}
-          setCountry={setCountry}
-          handleFilter={handleFilter}
-          setRegion={handleLocaleFilter}
-        ></ProjectList>
+        <>
+          <div style={{ height: "140px" }}></div>
+          <ProjectList
+            projects={projects}
+            handleTypeFilter={handleTypeFilter}
+            setCity={setCity}
+            setCountry={setCountry}
+            handleFilter={handleFilter}
+            setRegion={handleLocaleFilter}
+            setYear={setYear}
+            setProjects={setProjects}
+          ></ProjectList>
+        </>
       )}
     </Layout>
   )
