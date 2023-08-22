@@ -160,7 +160,7 @@ const Team = ({ data }) => {
                   <hr className="faded"></hr>
                   <div className="career-posting">
                     <p>{career.jobTitle}</p>
-                    <Link to={`careers/${career.slug}`} className="home-link career-apply">
+                    <Link to={`/careers/${career.slug}`} className="home-link career-apply">
                       <BsArrowRight></BsArrowRight> Apply Here
                     </Link>
                   </div>
