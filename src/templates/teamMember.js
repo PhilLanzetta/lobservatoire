@@ -6,7 +6,7 @@ import { marked } from "marked"
 import ProjectGrid from "../components/projectGrid"
 
 const TeamMember = ({ data }) => {
-  const { name, title, headShot, project, teamMemberBio } =
+  const { name, title, headShot, project, teamMemberBiography } =
     data.contentfulTeamMember
 
   const endsInS = name.charAt(name.length - 1) === "s"
@@ -35,11 +35,11 @@ const TeamMember = ({ data }) => {
               <h1>{name}</h1>
               <h2>{title}</h2>
             </div>
-            {teamMemberBio && (
+            {teamMemberBiography && (
               <div
                 className="team-member-bio"
                 dangerouslySetInnerHTML={{
-                  __html: marked.parse(teamMemberBio.teamMemberBio),
+                  __html: marked.parse(teamMemberBiography.teamMemberBiography),
                 }}
               ></div>
             )}
@@ -79,8 +79,8 @@ export const query = graphql`
         slug
         year
       }
-      teamMemberBio {
-        teamMemberBio
+      teamMemberBiography {
+        teamMemberBiography
       }
       title
       name

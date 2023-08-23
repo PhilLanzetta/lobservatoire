@@ -10,7 +10,7 @@ const Team = ({ data }) => {
   const teamInfo = data.contentfulTeamPage
   const herve = data.herve
   const bioAbbridged =
-    herve.teamMemberBio.teamMemberBio.split("BIBLIOGRAPHY")[0]
+    herve.teamMemberBiography.teamMemberBiography.split("BIBLIOGRAPHY")[0]
   const teamMembers = data.allContentfulTeamMember.nodes
   const herveTeam = data.allContentfulTeamMember.nodes.filter(
     member => member.name === "Hervé Descottes"
@@ -192,8 +192,8 @@ export const query = graphql`
     }
     herve: contentfulTeamMember(slug: { eq: "herve-descottes" }) {
       slug
-      teamMemberBio {
-        teamMemberBio
+      teamMemberBiography {
+        teamMemberBiography
       }
     }
     allContentfulTeamMember(
