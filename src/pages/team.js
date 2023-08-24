@@ -9,9 +9,12 @@ import { BsArrowRight } from "react-icons/bs"
 const Team = ({ data }) => {
   const teamInfo = data.contentfulTeamPage
   const herve = data.herve
-  const bioAbbridged =
-    herve.teamMemberBiography.teamMemberBiography.split("BIBLIOGRAPHY")[0]
+  console.log(herve)
   const teamMembers = data.allContentfulTeamMember.nodes
+  const bioShortened =
+    herve.teamMemberBiography.childMarkdownRemark.html.split(
+      "<p>BIBLIOGRAPHY"
+    )[0]
   const herveTeam = data.allContentfulTeamMember.nodes.filter(
     member => member.name === "Hervé Descottes"
   )[0]
@@ -43,9 +46,7 @@ const Team = ({ data }) => {
               ></GatsbyImage>
             </Link>
             <div className="herve-abbridged">
-              <div
-                dangerouslySetInnerHTML={{ __html: marked.parse(bioAbbridged) }}
-              ></div>
+              <div dangerouslySetInnerHTML={{ __html: bioShortened }}></div>
               <Link to={herve.slug} className="home-link">
                 <BsArrowRight></BsArrowRight> Learn More
               </Link>
@@ -160,7 +161,10 @@ const Team = ({ data }) => {
                   <hr className="faded"></hr>
                   <div className="career-posting">
                     <p>{career.jobTitle}</p>
-                    <Link to={`/careers/${career.slug}`} className="home-link career-apply">
+                    <Link
+                      to={`/careers/${career.slug}`}
+                      className="home-link career-apply"
+                    >
                       <BsArrowRight></BsArrowRight> Apply Here
                     </Link>
                   </div>
@@ -193,7 +197,9 @@ export const query = graphql`
     herve: contentfulTeamMember(slug: { eq: "herve-descottes" }) {
       slug
       teamMemberBiography {
-        teamMemberBiography
+        childMarkdownRemark {
+          html
+        }
       }
     }
     allContentfulTeamMember(

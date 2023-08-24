@@ -2,7 +2,6 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { marked } from "marked"
 import ProjectGrid from "../components/projectGrid"
 
 const TeamMember = ({ data }) => {
@@ -12,7 +11,7 @@ const TeamMember = ({ data }) => {
   const endsInS = name.charAt(name.length - 1) === "s"
 
   const orderedProjects = project.sort((a, b) => (a.year < b.year ? 1 : -1))
-  
+
   return (
     <Layout>
       <div className="page-header">
@@ -39,7 +38,7 @@ const TeamMember = ({ data }) => {
               <div
                 className="team-member-bio"
                 dangerouslySetInnerHTML={{
-                  __html: marked.parse(teamMemberBiography.teamMemberBiography),
+                  __html: teamMemberBiography.childMarkdownRemark.html,
                 }}
               ></div>
             )}
@@ -80,7 +79,9 @@ export const query = graphql`
         year
       }
       teamMemberBiography {
-        teamMemberBiography
+        childMarkdownRemark {
+          html
+        }
       }
       title
       name
