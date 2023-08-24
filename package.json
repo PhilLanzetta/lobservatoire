@@ -8,6 +8,7 @@
     "@emotion/react": "^11.11.1",
     "@table-library/react-table-library": "^4.1.7",
     "gatsby": "^5.12.1",
+    "gatsby-adapter-netlify": "^1.0.0",
     "gatsby-plugin-dark-mode": "^1.1.2",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.11.0",
