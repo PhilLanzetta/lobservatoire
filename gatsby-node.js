@@ -12,7 +12,9 @@ exports.createPages = async ({ actions, graphql }) => {
             }
           }
         }
-        allContentfulTeamMember {
+        allContentfulTeamMember(
+          filter: { primaryOffice: { ne: "No Longer Employed" } }
+        ) {
           edges {
             node {
               slug
