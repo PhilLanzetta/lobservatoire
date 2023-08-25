@@ -9,21 +9,13 @@ const ProjectList = ({
   setYear,
   setProjects,
 }) => {
-  const orderByName = () => {
-    const reOrdered = projects.sort((a, b) =>
-      a.projectName > b.projectName ? 1 : -1
-    )
-    setProjects(reOrdered)
-  }
   return (
     <div className="project-list-container">
       <div className="project-list-header">
-        <button className="list-button" onClick={() => orderByName()}>
-          Project
-        </button>
-        <button className="list-button">Typology</button>
-        <button className="list-button">Location</button>
-        <button className="list-button">Year</button>
+        <p className="list-button">Project</p>
+        <p className="list-button">Typology</p>
+        <p className="list-button">Location</p>
+        <p className="list-button">Year</p>
       </div>
       {projects.map(project => (
         <div key={project.id} className="project-list-row">
