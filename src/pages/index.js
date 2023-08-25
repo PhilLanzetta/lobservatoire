@@ -92,7 +92,10 @@ const IndexPage = ({ location, data }) => {
 
 export const query = graphql`
   query {
-    allContentfulProject(filter: { featured: { eq: true } }) {
+    allContentfulProject(
+      filter: { featured: { eq: true } }
+      sort: { year: DESC }
+    ) {
       nodes {
         geographicRegion
         id
