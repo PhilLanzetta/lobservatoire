@@ -59,6 +59,7 @@ html {
   background: var(--background);
   color: var(--color);
   --fadedColor: rgba(0, 0, 0, 0.5);
+  --lightColor: rgba(0, 0, 0, 0.25);
   transition: all var(--md-transition);
 }
 
@@ -68,6 +69,7 @@ html {
   color: var(--color);
   --color: var(--color-dark-mode);
   --fadedColor: rgba(255, 255, 255, 0.5);
+  --lightColor: rgba(255, 255, 255, 0.5);
   transition: all var(--md-transition);
 }
 
@@ -1021,7 +1023,6 @@ PROJECTS PAGE
   padding: 10px 40px;
 }
 
-
 .project-list-header {
   color: var(--fadedColor);
 }
@@ -1036,6 +1037,45 @@ PROJECTS PAGE
 .list-button {
   text-align: left;
   padding-right: 20px;
+}
+
+.projects-map-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.projects-map-container svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.projects-map-container path {
+  fill: var(--lightColor);
+}
+
+.map-marker {
+  fill: var(--color);
+}
+
+.zoom-button-container {
+  position: absolute;
+  bottom: 40px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.zoom-button {
+  background: var(--color);
+  color: var(--background);
+  padding: var(--spacing-sm);
+  border: 1px solid var(--background);
 }
 
 @media screen and (max-width: 1250px) {

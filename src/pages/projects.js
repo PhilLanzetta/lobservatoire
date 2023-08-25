@@ -8,6 +8,7 @@ import { GrFormClose } from "react-icons/gr"
 import { AiOutlineLine } from "react-icons/ai"
 import ProjectGrid from "../components/projectGrid"
 import ProjectList from "../components/projectList"
+import ProjectMap from "../components/projectMap"
 
 const Projects = ({ data, location }) => {
   const allProjects = data.allContentfulProject.nodes
@@ -528,6 +529,20 @@ const Projects = ({ data, location }) => {
             setYear={setYear}
             setProjects={setProjects}
           ></ProjectList>
+        </>
+      )}
+      {view === "map" && (
+        <>
+          <ProjectMap
+            projects={projects}
+            handleTypeFilter={handleTypeFilter}
+            setCity={setCity}
+            setCountry={setCountry}
+            handleFilter={handleFilter}
+            setRegion={handleLocaleFilter}
+            setYear={setYear}
+            setProjects={setProjects}
+          ></ProjectMap>
         </>
       )}
     </Layout>
