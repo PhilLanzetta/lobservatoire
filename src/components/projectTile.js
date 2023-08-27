@@ -22,33 +22,63 @@ const ProjectTile = ({
         <p className="tile-title">{project.projectName}</p>
       </Link>
       <div className="tile-tag-container">
-        {project.typology?.map((type, index) => (
-          <button
-            className="tile-tag-btn"
-            key={index}
-            onClick={() => handleTypeFilter(type)}
-          >
-            {type}
-          </button>
-        ))}
+        {project.typology?.map((type, index) =>
+          projectPage ? (
+            <button
+              className="tile-tag-btn"
+              key={index}
+              onClick={() => handleTypeFilter(type)}
+            >
+              {type}
+            </button>
+          ) : (
+            <Link
+              to="/projects"
+              className="tile-tag-btn"
+              key={index}
+              state={{ typeFilter: type }}
+            >
+              {type}
+            </Link>
+          )
+        )}
         {hasLocation ? (
-          <button
-            className="tile-tag-btn"
-            onClick={() => {
-              setCity(project.city)
-              setCountry(project.country)
-            }}
-          >
-            {project.city && <span>{project.city}, </span>}
-            {project.country}
-          </button>
-        ) : (
+          projectPage ? (
+            <button
+              className="tile-tag-btn"
+              onClick={() => {
+                setCity(project.city)
+                setCountry(project.country)
+              }}
+            >
+              {project.city && <span>{project.city}, </span>}
+              {project.country}
+            </button>
+          ) : (
+            <Link
+              className="tile-tag-btn"
+              to="/projects"
+              state={{ city: project.city, country: project.country }}
+            >
+              {project.city && <span>{project.city}, </span>}
+              {project.country}
+            </Link>
+          )
+        ) : projectPage ? (
           <button
             className="tile-tag-btn"
             onClick={() => setRegion(project.geographicRegion)}
           >
             {project.geographicRegion}
           </button>
+        ) : (
+          <Link
+            className="tile-tag-btn"
+            to="/projects"
+            state={{ regionFilter: [project.geographicRegion] }}
+          >
+            {project.geographicRegion}
+          </Link>
         )}
       </div>
     </div>

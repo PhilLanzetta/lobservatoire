@@ -5,16 +5,14 @@ import ProjectTile from "./projectTile"
 
 const ProjectGrid = ({
   projects,
-  team,
+  projectPage,
   setCity,
   setCountry,
   handleTypeFilter,
   setRegion,
 }) => {
   return (
-    <div
-      className="projects-grid-container"
-    >
+    <div className="projects-grid-container">
       {projects ? (
         projects.map(project => (
           <ProjectTile
@@ -24,6 +22,7 @@ const ProjectGrid = ({
             setCountry={setCountry}
             handleTypeFilter={handleTypeFilter}
             setRegion={setRegion}
+            projectPage={projectPage}
           ></ProjectTile>
         ))
       ) : (

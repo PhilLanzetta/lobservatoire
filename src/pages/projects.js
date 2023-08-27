@@ -94,8 +94,6 @@ const Projects = ({ data, location }) => {
   }
 
   const filterByInteriorDesigner = array => {
-    console.log(interiorDesigner)
-    console.log(array)
     return array.filter(item => item.interiorDesigner === interiorDesigner)
   }
 
@@ -231,10 +229,26 @@ const Projects = ({ data, location }) => {
   useEffect(() => {
     if (isDisabled) {
       setProjects(allProjects)
+    } else if (filterOpen) {
+      return
     } else {
       handleFilter()
     }
-  }, [city, typologyFilter, regionFilter, year])
+  }, [
+    city,
+    typologyFilter,
+    regionFilter,
+    year,
+    progressFilter,
+    recent,
+    featuredFilter,
+    year,
+    architect,
+    interiorDesigner,
+    country,
+    network,
+    client,
+  ])
 
   return (
     <Layout>
@@ -385,7 +399,7 @@ const Projects = ({ data, location }) => {
           {featuredFilter && (
             <button
               className="current-filter-button"
-              onClick={() => setFilterOpen(true)}
+              onClick={() => setFeaturedFilter(false)}
             >
               <GrFormClose></GrFormClose>Featured Projects
             </button>
@@ -393,7 +407,7 @@ const Projects = ({ data, location }) => {
           {recent && (
             <button
               className="current-filter-button"
-              onClick={() => setFilterOpen(true)}
+              onClick={() => setRecent(false)}
             >
               <GrFormClose></GrFormClose>Recently Completed
             </button>
@@ -401,7 +415,7 @@ const Projects = ({ data, location }) => {
           {progressFilter && (
             <button
               className="current-filter-button"
-              onClick={() => setFilterOpen(true)}
+              onClick={() => setProgressFilter(false)}
             >
               <GrFormClose></GrFormClose>In Progress
             </button>
@@ -412,7 +426,7 @@ const Projects = ({ data, location }) => {
                 <button
                   key={index}
                   className="current-filter-button"
-                  onClick={() => setFilterOpen(true)}
+                  onClick={() => handleTypeFilter(item)}
                 >
                   <GrFormClose></GrFormClose>
                   {item}
@@ -426,7 +440,7 @@ const Projects = ({ data, location }) => {
                 <button
                   key={index}
                   className="current-filter-button"
-                  onClick={() => setFilterOpen(true)}
+                  onClick={() => handleLocaleFilter(item)}
                 >
                   <GrFormClose></GrFormClose>
                   {item}
@@ -437,7 +451,7 @@ const Projects = ({ data, location }) => {
           {city && (
             <button
               className="current-filter-button"
-              onClick={() => setFilterOpen(true)}
+              onClick={() => setCity("")}
             >
               <GrFormClose></GrFormClose>
               {city}
@@ -446,7 +460,7 @@ const Projects = ({ data, location }) => {
           {year && (
             <button
               className="current-filter-button"
-              onClick={() => setFilterOpen(true)}
+              onClick={() => setYear("")}
             >
               <GrFormClose></GrFormClose>
               Year: {year}
@@ -455,7 +469,7 @@ const Projects = ({ data, location }) => {
           {architect && (
             <button
               className="current-filter-button"
-              onClick={() => setFilterOpen(true)}
+              onClick={() => setArchitect("")}
             >
               <GrFormClose></GrFormClose>
               {architect}
@@ -464,7 +478,7 @@ const Projects = ({ data, location }) => {
           {interiorDesigner && (
             <button
               className="current-filter-button"
-              onClick={() => setFilterOpen(true)}
+              onClick={() => setInteriorDesigner("")}
             >
               <GrFormClose></GrFormClose>
               {interiorDesigner}
@@ -473,7 +487,7 @@ const Projects = ({ data, location }) => {
           {country && (
             <button
               className="current-filter-button"
-              onClick={() => setFilterOpen(true)}
+              onClick={() => setCountry("")}
             >
               <GrFormClose></GrFormClose>
               {country}
@@ -482,7 +496,7 @@ const Projects = ({ data, location }) => {
           {network && (
             <button
               className="current-filter-button"
-              onClick={() => setFilterOpen(true)}
+              onClick={() => setNetwork("")}
             >
               <GrFormClose></GrFormClose>
               {network.split(": ")[1]}
@@ -491,7 +505,7 @@ const Projects = ({ data, location }) => {
           {client && (
             <button
               className="current-filter-button"
-              onClick={() => setFilterOpen(true)}
+              onClick={() => setClient("")}
             >
               <GrFormClose></GrFormClose>
               {client}
@@ -515,6 +529,7 @@ const Projects = ({ data, location }) => {
             setCountry={setCountry}
             handleFilter={handleFilter}
             setRegion={handleLocaleFilter}
+            projectPage={true}
           ></ProjectGrid>
         </>
       )}
