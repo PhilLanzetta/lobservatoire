@@ -6,6 +6,7 @@ import Seo from "../components/seo"
 import HomeSlider from "../components/homeSlider"
 import { marked } from "marked"
 import { BsArrowRight } from "react-icons/bs"
+import WorksInProgress from "../components/worksInProgress"
 
 const IndexPage = ({ location, data }) => {
   const homeImages = data.allContentfulProject.nodes
@@ -20,6 +21,8 @@ const IndexPage = ({ location, data }) => {
   const teamHeadline = data.contentfulTeamPageTeamHeadlineTextNode.teamHeadline
 
   const careers = data.allContentfulCareerPosting.nodes
+
+  const worksInProgress = data.WIP.nodes
 
   return (
     <Layout location={location}>
@@ -38,6 +41,7 @@ const IndexPage = ({ location, data }) => {
           </Link>
         </div>
       </div>
+      <WorksInProgress projects={worksInProgress}></WorksInProgress>
       <div className="home-container">
         <Link to="/about/#philosophy" className="home-preface-link">
           Philosophy
@@ -124,6 +128,24 @@ export const query = graphql`
       nodes {
         id
         jobTitle
+        slug
+      }
+    }
+    WIP: allContentfulProject(
+      filter: { status: { eq: "In Progress" } }
+      sort: { year: DESC }
+      limit: 6
+    ) {
+      nodes {
+        heroImage {
+          gatsbyImageData(width: 400)
+          description
+        }
+        id
+        projectName
+        city
+        country
+        typology
         slug
       }
     }

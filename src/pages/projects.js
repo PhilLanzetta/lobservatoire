@@ -18,7 +18,7 @@ const Projects = ({ data, location }) => {
   const [view, setView] = useState("grid")
   const [recent, setRecent] = useState(false)
   const [featuredFilter, setFeaturedFilter] = useState(false)
-  const [progressFilter, setProgressFilter] = useState(false)
+  const [progressFilter, setProgressFilter] = useState(location.state?.progressFilter || false)
   const [typologyFilter, setTypologyFilter] = useState(
     location.state?.typologyFilter || []
   )

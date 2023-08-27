@@ -809,6 +809,10 @@ PROJECTS PAGE
   padding: 40px;
 }
 
+.team-member-project-container .projects-grid-container {
+  padding: 40px 0;
+}
+
 .project-tile {
   width: 32%;
   margin-bottom: var(--spacing-md);
@@ -1117,6 +1121,14 @@ PROJECTS PAGE
 }
 
 @media screen and (max-width: 600px) {
+  .projects-grid-container {
+    padding: 40px 20px;
+  }
+
+  .projects-grid-container .project-tile {
+    margin-bottom: var(--spacing-big);
+  }
+
   .project-tile {
     width: 100%;
   }
@@ -1238,6 +1250,36 @@ HOME
 .home-link:hover {
   opacity: 1;
   transition: all var(--fast-transition);
+}
+
+.wip-container {
+  padding: 10% 0 5% 5%;
+}
+
+.wip-container .project-tile {
+  width: 98%;
+}
+
+.wip-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  margin-right: var(--spacing-sm);
+}
+
+.wip-heading-element {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.wip-heading-element .home-link {
+  margin-top: 0;
+}
+
+.wip-title {
+  margin-right: var(--spacing-sm);
 }
 
 @media screen and (max-width: 600px) {

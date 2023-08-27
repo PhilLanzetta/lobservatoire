@@ -3,6 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
 const ProjectTile = ({
+  projectPage,
   project,
   setCity,
   handleTypeFilter,
