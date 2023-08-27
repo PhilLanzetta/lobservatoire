@@ -18,7 +18,9 @@ const Projects = ({ data, location }) => {
   const [view, setView] = useState("grid")
   const [recent, setRecent] = useState(false)
   const [featuredFilter, setFeaturedFilter] = useState(false)
-  const [progressFilter, setProgressFilter] = useState(location.state?.progressFilter || false)
+  const [progressFilter, setProgressFilter] = useState(
+    location.state?.progressFilter || false
+  )
   const [typologyFilter, setTypologyFilter] = useState(
     location.state?.typologyFilter || []
   )
@@ -525,9 +527,7 @@ const Projects = ({ data, location }) => {
             setCity={setCity}
             setCountry={setCountry}
             handleFilter={handleFilter}
-            setRegion={handleLocaleFilter}
             setYear={setYear}
-            setProjects={setProjects}
           ></ProjectList>
         </>
       )}

@@ -39,7 +39,8 @@ const ProjectTile = ({
               setCountry(project.country)
             }}
           >
-            {project.city}, {project.country}
+            {project.city && <span>{project.city}, </span>}
+            {project.country}
           </button>
         ) : (
           <button
