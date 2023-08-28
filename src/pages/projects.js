@@ -339,7 +339,7 @@ const Projects = ({ data, location }) => {
           <div className="filter-column network-filter-column">
             <div>
               <p className="upper">Network</p>
-              <Link to="#" className="network-see-all">
+              <Link to="/network" className="network-see-all">
                 See All <BsArrowRight></BsArrowRight>
               </Link>
             </div>

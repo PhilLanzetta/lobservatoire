@@ -92,12 +92,12 @@ const HeroSlider = ({ images }) => {
           const imgWidth =
             (image.gatsbyImageData.width * 90) / image.gatsbyImageData.height
           return (
-            <div className="hero-slide-container">
+            <div className="hero-slide-container" key={index}>
               <div className="slide-flex-container">
                 <GatsbyImage
                   image={image.gatsbyImageData}
                   alt={image.description}
-                  style={{ width: `${imgWidth}vh`}}
+                  style={{ width: `${imgWidth}vh` }}
                   className="hero-slide-image"
                 ></GatsbyImage>
                 {index === imageIndex ? (

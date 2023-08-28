@@ -21,26 +21,34 @@ const Clients = ({ data }) => {
 
   return (
     <Layout>
-      {alphabetHeaders.map((letter, index) => (
-        <div key={index}>
-          <p>{letter}</p>
-          <ul>
-            {sortedClients.map(client => {
-              if (client.charAt(0) === letter) {
-                return (
-                  <li>
-                    <Link to="/projects" state={{ client: client }}>
-                      {client}
-                    </Link>
-                  </li>
-                )
-              } else {
-                return null
-              }
-            })}
-          </ul>
+      <div className="page-header">
+        <Link to="/clients">Clients</Link>
+      </div>
+      <hr className="faded-line page-header-bottom"></hr>
+      <div className="listing-page-container">
+        <div className="listing-column-container">
+          {alphabetHeaders.map((letter, index) => (
+            <div key={index} className="listing-column-element">
+              <p className="listing-heading">{letter}</p>
+              <ul>
+                {sortedClients.map((client, index) => {
+                  if (client.charAt(0) === letter) {
+                    return (
+                      <li className="listing-list-item" key={index}>
+                        <Link to="/projects" state={{ client: client }}>
+                          {client}
+                        </Link>
+                      </li>
+                    )
+                  } else {
+                    return null
+                  }
+                })}
+              </ul>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </Layout>
   )
 }
