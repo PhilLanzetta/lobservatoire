@@ -6,6 +6,9 @@ import {
   ZoomableGroup,
   Marker,
 } from "react-simple-maps"
+import { Tooltip } from "react-tooltip"
+import { Link } from "gatsby"
+import ProjectTile from "./projectTile"
 
 const ProjectMap = ({ projects }) => {
   const [zoomLevel, setZoomLevel] = useState(1)
@@ -14,7 +17,7 @@ const ProjectMap = ({ projects }) => {
   return (
     <div className="projects-map-container">
       <ComposableMap>
-        <ZoomableGroup zoom={zoomLevel} center={[0, 0]}>
+        <ZoomableGroup zoom={zoomLevel}>
           <Geographies geography="https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json">
             {({ geographies }) =>
               geographies.map(geo => (
@@ -38,8 +41,11 @@ const ProjectMap = ({ projects }) => {
                 project.exactLocation.lon,
                 project.exactLocation.lat,
               ]}
+              data-tooltip-id={project.id}
             >
-              <circle r={2} className="map-marker" />
+              <Link to={`/projects/${project.slug}`}>
+                <circle r={2} className="map-marker" />
+              </Link>
             </Marker>
           ))}
         </ZoomableGroup>
@@ -64,6 +70,11 @@ const ProjectMap = ({ projects }) => {
           -
         </button>
       </div>
+      {cleanedData.map(project => (
+        <Tooltip id={project.id} key={project.id} place="bottom" clickable className="map-tooltip">
+            <ProjectTile project={project}></ProjectTile>
+        </Tooltip>
+      ))}
     </div>
   )
 }

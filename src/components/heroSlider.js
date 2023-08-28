@@ -1,8 +1,7 @@
 import React from "react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Slider from "react-slick"
 import { GatsbyImage } from "gatsby-plugin-image"
-import useWindowSize from "../utils/useWindowSize"
 
 function NextArrow(props) {
   const { onClick } = props
