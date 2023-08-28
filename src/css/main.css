@@ -1666,3 +1666,56 @@ About Page
     width: 100%;
   }
 }
+
+/*
+==========
+Listing Page (Awards/Clients/Network)
+==========
+*/
+
+.listing-page-container {
+  padding: 40px;
+  padding-top: 160px;
+}
+
+.listing-column-container {
+  column-count: 3;
+  column-gap: 40px;
+}
+
+.listing-column-container div {
+  break-inside: avoid-column;
+}
+
+.listing-column-element {
+  margin-bottom: var(--spacing-md);
+}
+
+.listing-heading {
+  font-size: var(--font-lg-resp);
+  border-bottom: 1px solid var(--fadedColor);
+}
+
+.listing-list-item {
+  border-bottom: 1px solid var(--fadedColor);
+  list-style: none;
+  padding: 10px 0;
+}
+
+@media screen and (max-width: 1100px) {
+  .listing-column-container {
+    column-count: 2;
+    column-gap: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .listing-column-container {
+    column-count: 1;
+  }
+
+  .listing-page-container {
+    padding: 20px;
+    padding-top: 160px;
+  }
+}

@@ -5,8 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import ProjectGrid from "../components/projectGrid"
 
 const TeamMember = ({ data }) => {
-  const { name, title, headShot, project, teamMemberBiography } =
-    data.contentfulTeamMember
+  const { name, title, headShot, project, bio } = data.contentfulTeamMember
 
   const endsInS = name.charAt(name.length - 1) === "s"
 
@@ -34,11 +33,11 @@ const TeamMember = ({ data }) => {
               <h1>{name}</h1>
               <h2>{title}</h2>
             </div>
-            {teamMemberBiography && (
+            {bio && (
               <div
                 className="team-member-bio"
                 dangerouslySetInnerHTML={{
-                  __html: teamMemberBiography.childMarkdownRemark.html,
+                  __html: bio.childMarkdownRemark.html,
                 }}
               ></div>
             )}
@@ -78,7 +77,7 @@ export const query = graphql`
         slug
         year
       }
-      teamMemberBiography {
+      bio: teamMemberBiography {
         childMarkdownRemark {
           html
         }

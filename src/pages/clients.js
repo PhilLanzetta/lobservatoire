@@ -19,8 +19,6 @@ const Clients = ({ data }) => {
     .map(client => client.charAt(0))
     .filter(onlyUnique)
 
-  console.log(alphabetHeaders)
-
   return (
     <Layout>
       {alphabetHeaders.map((letter, index) => (
