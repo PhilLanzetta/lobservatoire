@@ -94,11 +94,11 @@ const HomeSlider = ({ images }) => {
         className="home-slider"
         style={{ height: `${mobile ? initialHeight + "px" : height + "px"}` }}
       >
-        {images.map((image, index) => (
+        {images?.map((image, index) => (
           <div className="home-slide-container" key={index}>
             <GatsbyImage
-              image={image.heroImage?.gatsbyImageData}
-              alt={image.heroImage?.description}
+              image={image?.heroImage?.gatsbyImageData}
+              alt={image?.heroImage?.description}
               className="home-slide-image"
               style={{
                 height: `${mobile ? initialHeight + "px" : height + "px"}`,

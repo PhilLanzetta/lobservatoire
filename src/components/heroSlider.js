@@ -88,15 +88,15 @@ const HeroSlider = ({ images }) => {
     <div className="hero-slider-container">
       <div className="load"></div>
       <Slider {...settings} className="hero-slider">
-        {images.map((image, index) => {
+        {images?.map((image, index) => {
           const imgWidth =
-            (image.gatsbyImageData.width * 90) / image.gatsbyImageData.height
+            (image?.gatsbyImageData.width * 90) / image?.gatsbyImageData.height
           return (
             <div className="hero-slide-container" key={index}>
               <div className="slide-flex-container">
                 <GatsbyImage
-                  image={image.gatsbyImageData}
-                  alt={image.description}
+                  image={image?.gatsbyImageData}
+                  alt={image?.description}
                   style={{ width: `${imgWidth}vh` }}
                   className="hero-slide-image"
                 ></GatsbyImage>
